@@ -705,9 +705,9 @@
             }
             
             updateMusicVolume() {
-                // Volume increases with bee count: 25% + 0.01% per bee, capped at 50%
+                // Volume increases with bee count: 25% + 0.03% per bee, capped at 50%
                 const beeCount = this.bees.length;
-                const newVolume = Math.min(0.25 + (0.01 * beeCount), 0.5);
+                const newVolume = Math.min(0.25 + (0.03 * beeCount), 0.5);
                 this.setVolume(newVolume);
             }
 
