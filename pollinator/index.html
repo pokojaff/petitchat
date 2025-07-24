@@ -540,7 +540,7 @@
                 this.selectedPlantType = 'burdock_greater';
                 this.pollinationCount = 0;
                 this.audioEnabled = true;
-                this.masterVolume = 0.25; // Start at 25% volume
+                this.masterVolume = 0.3; // Start at 30% volume
                 this.audioContext = null;
                 this.backgroundMusic = document.getElementById('backgroundMusic');
                 this.plantTypes = {
@@ -565,7 +565,7 @@
                 this.createInitialBees();
                 this.startBeeMovement();
                 this.updateStats();
-                this.setVolume(0.25); // Nastavíme výchozí hlasitost přímo
+                this.setVolume(0.3); // Nastavíme výchozí hlasitost přímo
             }
 
             async initAudio() {
@@ -705,9 +705,9 @@
             }
             
             updateMusicVolume() {
-                // Volume increases with bee count: 25% + 0.03% per bee, capped at 50%
+                // Volume increases with bee count: 30% + 5% per bee, capped at 50%
                 const beeCount = this.bees.length;
-                const newVolume = Math.min(0.25 + (0.03 * beeCount), 0.5);
+                const newVolume = Math.min(0.3 + (0.05 * beeCount), 0.6);
                 this.setVolume(newVolume);
             }
 
