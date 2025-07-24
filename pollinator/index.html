@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Pollinator Garden</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #87CEEB 0%, #98FB98 50%, #90EE90 100%);
+            height: 100vh;
+            overflow: hidden;
+            cursor: crosshair;
+        }
+
+        .header {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            z-index: 100;
+            color: #2d5016;
+            text-shadow: 0 2px 4px rgba(255,255,255,0.8);
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .header h1 img {
+            width: 40px;
+            height: auto;
+            vertical-align: middle;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.8;
+        }
+
+        .garden {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            background: radial-gradient(ellipse at center, rgba(255,255,255,0.1) 0%, transparent 70%);
+        }
+
+        .plant {
+            position: absolute;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            animation: plantGrow 0.5s ease-out;
+        }
+
+        .plant img {
+            width: auto;
+            height: 75px;
+        }
+
+        .plant.attractive {
+            filter: brightness(1.2) saturate(1.3);
+        }
+
+        .plant.unattractive {
+            filter: brightness(0.8) saturate(0.7);
+        }
+
+        @keyframes plantGrow {
+            0% {
+                transform: scale(0) rotate(180deg);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.2) rotate(90deg);
+                opacity: 0.7;
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        .bee {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(45deg, #FFD700 0%, #FFA500 100%);
+            border-radius: 60% 40% 60% 40%;
+            z-index: 50;
+            transition: all 0.1s ease;
+            animation: beeHover 2s ease-in-out infinite alternate;
+        }
+
+        .bee::before {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 8px;
+            background: rgba(255,255,255,0.7);
+            border-radius: 50%;
+            top: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: wingFlap 0.1s linear infinite;
+        }
+
+        .bee::after {
+            content: '';
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #000;
+            border-radius: 50%;
+            top: 8px;
+            left: 8px;
+        }
+        
+        .ladybug {
+		    position: absolute;
+		    width: 20px;
+		    height: 20px;
+		    background-color: #E74C3C; /* Červená barva */
+		    border-radius: 50%;
+		    z-index: 50;
+		    transition: all 0.1s ease;
+		    animation: beeHover 2s ease-in-out infinite alternate;
+		}
+		
+		.ladybug::before {
+		    content: '';
+		    position: absolute;
+		    width: 12px;
+		    height: 8px;
+		    background: rgba(0,0,0,0.7);
+		    border-radius: 50%;
+		    top: -2px;
+		    left: 50%;
+		    transform: translateX(-50%);
+		    animation: wingFlap 0.1s linear infinite;
+		}
+		
+		.ladybug::after {
+		    content: '';
+		    position: absolute;
+		    width: 100%;
+		    height: 100%;
+		    background-image: 
+		        radial-gradient(circle, #000 20%, transparent 20%),
+		        radial-gradient(circle, #000 20%, transparent 20%);
+		    background-size: 10px 10px;
+		    background-position: 
+		        5px 5px,
+		        15px 10px;
+		    background-repeat: no-repeat;
+		}
+		
+		.ladybug.flying {
+		    animation: beeFly 0.05s linear infinite;
+		}
+
+        @keyframes beeHover {
+            0% { transform: translateY(0px) rotate(-2deg); }
+            100% { transform: translateY(-8px) rotate(2deg); }
+        }
+
+        @keyframes wingFlap {
+            0%, 100% { opacity: 0.7; transform: translateX(-50%) scaleX(1); }
+            50% { opacity: 0.9; transform: translateX(-50%) scaleX(1.3); }
+        }
+
+        .bee.flying {
+            animation: beeFly 0.05s linear infinite;
+        }
+
+        @keyframes beeFly {
+            0% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-2px) rotate(5deg); }
+            50% { transform: translateY(0px) rotate(0deg); }
+            75% { transform: translateY(2px) rotate(-5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        .instructions {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: transparent;
+            padding: 15px 30px;
+                        text-align: center;
+            color: #2d5016;
+           
+            backdrop-filter: blur(10px);
+        }
+
+        .instructions img {
+            width: 20px;
+            height: auto;
+            vertical-align: middle;
+        }
+
+        .plant-menu {
+            position: absolute;
+            top: 120px;
+            right: 30px;
+            background: rgba(255,255,255,0.95);
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            backdrop-filter: blur(10px);
+            max-height: 70vh;
+            overflow-y: auto;
+            box-sizing: border-box;
+        }
+
+        .plant-menu::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .plant-menu::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+        }
+
+        .plant-menu::-webkit-scrollbar-thumb {
+            background: #4CAF50;
+            border-radius: 10px;
+        }
+
+        .plant-menu::-webkit-scrollbar-thumb:hover {
+            background: #45a049;
+        }
+
+        .plant-option {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+        }
+
+        .plant-option:hover {
+            background: rgba(144,238,144,0.3);
+            transform: translateX(5px);
+        }
+
+        .plant-option.selected {
+            border-color: #4CAF50;
+            background: rgba(76,175,80,0.2);
+        }
+
+        .plant-option .emoji {
+            width: 30px;
+            height:35px;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .plant-option .emoji img {
+            width: auto;
+            height: 40px;
+        }
+
+        .plant-option .info {
+            flex: 1;
+        }
+
+        .plant-option .name {
+            font-weight: bold;
+            color: #2d5016;
+        }
+
+        .plant-option .type {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .stats {
+            position: absolute;
+            top: 120px;
+            left: 30px;
+            background: rgba(255,255,255,0.95);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            backdrop-filter: blur(10px);
+            color: #2d5016;
+        }
+
+        .stats img {
+            width: 20px;
+            height: auto;
+            vertical-align: middle;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #FFD700;
+            border-radius: 50%;
+            animation: sparkleAnim 1s ease-out forwards;
+            pointer-events: none;
+        }
+
+        @keyframes sparkleAnim {
+            0% {
+                transform: scale(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(3) rotate(180deg);
+                opacity: 0;
+            }
+        }
+
+        .audio-controls {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            background: rgba(255,255,255,0.9);
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .audio-toggle {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .audio-toggle:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+
+        .audio-toggle.muted {
+            background: #f44336;
+        }
+
+        .volume-control {
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .volume-slider {
+            width: 100px;
+        }
+
+        .floating-element img {
+            width: 20px;
+            height: auto;
+        }
+        
+        .music-info {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.7);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #2d5016;
+            transition: opacity 0.3s;
+            opacity: 0.8;
+        }
+        
+        .attraction-info {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 5px 10px;
+            border-radius: 10px;
+            font-size: 12px;
+            color: #2d5016;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Digital Pollinator Garden</h1>
+        <p>Choose a herb and plant it anywhere in your garden.</p>
+    </div>
+
+    <div class="audio-controls" style="z-index: 1000">
+        <button class="audio-toggle" id="audioToggle">
+            <span>🔊</span>
+            <span>Sound On</span>
+        </button>
+        <!-- <div class="volume-control" style="display: invisible">
+            <span>🔉</span>
+            <input type="range" class="volume-slider" id="volumeSlider" min="0" max="1" step="0.01" value="0.01">
+            <span>🔊</span>
+        </div> -->
+    </div>
+    
+    
+    <div class="garden" id="garden"></div>
+    
+    <audio id="backgroundMusic" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="plant-menu">
+        <h3 style="color: #2d5016; margin-bottom: 15px;">Select Plant Type</h3>
+        <div class="plant-option selected" data-plant="burdock_greater">
+            <div class="emoji"><img src="perforata.png" alt="burdock greater"></div>
+            <div class="info">
+                <div class="name">Burdock greater</div>
+                
+            </div>
+        </div>
+        <div class="plant-option" data-plant="senna">
+            <div class="emoji"><img src="cassia-laxativa.png" alt="senna"></div>
+            <div class="info">
+                <div class="name">Senna</div>
+                
+            </div>
+        </div>
+        <div class="plant-option" data-plant="prickly_pear_cactus">
+            <div class="emoji"><img src="opuntia.png" alt="prickly pear cactus"></div>
+            <div class="info">
+                <div class="name">Prickly pear cactus</div>
+                
+            </div>
+        </div>
+        <div class="plant-option" data-plant="martagon_lily">
+            <div class="emoji"><img src="lilium-martagon.png" alt="martagon lily"></div>
+            <div class="info">
+                <div class="name">Martagon lily</div>
+                
+            </div>
+        </div>
+        <div class="plant-option" data-plant="cursed_buttercup">
+            <div class="emoji"><img src="ranunculus-sceleratus.png" alt="cursed buttercup"></div>
+            <div class="info">
+                <div class="name">Cursed buttercup</div>
+                
+            </div>
+        </div>
+        <div class="plant-option" data-plant="adders_tongue_fern">
+            <div class="emoji"><img src="ophioglossum-vulgatum.png" alt="adder's-tongue fern"></div>
+            <div class="info">
+                <div class="name">Adder's-tongue fern</div>
+                
+            </div>
+        </div>
+        <div class="plant-option" data-plant="common_columbine">
+            <div class="emoji"><img src="aquilegia-vulgaris.png" alt="common columbine"></div>
+            <div class="info">
+                <div class="name">Common columbine</div>
+                
+            </div>
+        </div>
+        <div class="plant-option" data-plant="scottish_bluebell">
+            <div class="emoji"><img src="campanula-rotundifolia.png" alt="scottish bluebell"></div>
+            <div class="info">
+                <div class="name">Scottish bluebell</div>
+                
+            </div>
+        </div>
+        <div class="plant-option" data-plant="calamus">
+            <div class="emoji"><img src="acorus-calamus.png" alt="calamus"></div>
+            <div class="info">
+                <div class="name">Calamus</div>
+                
+            </div>
+        </div>
+        <div class="plant-option" data-plant="milk_thistle">
+            <div class="emoji"><img src="silybum-marianum.png" alt="milk thistle"></div>
+            <div class="info">
+                <div class="name">Milk thistle</div>
+                
+            </div>
+        </div>
+        <div class="plant-option" data-plant="levander">
+            <div class="emoji"><img src="levandula.png" alt="levander"></div>
+            <div class="info">
+                <div class="name">Levander</div>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="stats">
+        <h3 style="margin-bottom: 15px;">Garden Stats</h3>
+        <div>Plants: <span id="plantCount">0</span></div>
+        <div>Active Pollinators: <span id="beeCount">3</span></div>
+        <div>Pollinations: <span id="pollinationCount">0</span></div>
+        <div>Music Volume: <span id="musicVolume">1%</span></div>
+    </div>
+
+    <div class="instructions">
+        
+        <div id="musicInfo" style="color:gray">
+        Music volume increases with bee activity (current: 1%)
+        </div>
+    </div>
+    
+    
+
+    <script>
+        class DigitalGarden {
+            constructor() {
+                this.garden = document.getElementById('garden');
+                this.plants = [];
+                this.bees = [];
+                this.selectedPlantType = 'burdock_greater';
+                this.pollinationCount = 0;
+                this.audioEnabled = true;
+                this.masterVolume = 0.25; // Start at 25% volume
+                this.audioContext = null;
+                this.backgroundMusic = document.getElementById('backgroundMusic');
+                this.plantTypes = {
+                    burdock_greater: { image: 'perforata.png', attraction: 0.2, size: 50 },
+                    senna: { image: 'cassia-laxativa.png', attraction: 0.2, size: 50 },
+                    prickly_pear_cactus: { image: 'opuntia.png', attraction: 0.3, size: 50 },
+                    martagon_lily: { image: 'lilium-martagon.png', attraction: 0.8, size: 50 },
+                    cursed_buttercup: { image: 'ranunculus-sceleratus.png', attraction: 0.6, size: 50 },
+                    adders_tongue_fern: { image: 'ophioglossum-vulgatum.png', attraction: 0.2, size: 50 },
+                    common_columbine: { image: 'aquilegia-vulgaris.png', attraction: 0.8, size: 50 },
+                    scottish_bluebell: { image: 'campanula-rotundifolia.png', attraction: 0.7, size: 50 },
+                    calamus: { image: 'acorus-calamus.png', attraction: 0.5, size: 50 },
+                    milk_thistle: { image: 'silybum-marianum.png', attraction: 0.7, size: 50 },
+                    levander: { image: 'levandula.png', attraction: 1.0, size: 50 }
+                };
+                
+                this.init();
+            }
+
+            async init() {
+                this.setupEventListeners();
+                this.createInitialBees();
+                this.startBeeMovement();
+                this.updateStats();
+                this.setVolume(0.25); // Nastavíme výchozí hlasitost přímo
+            }
+
+            async initAudio() {
+                try {
+                    // Modern browsers require user interaction before playing audio
+                    this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                    console.log('Audio system initialized');
+                } catch (error) {
+                    console.log('Audio not supported:', error);
+                    this.audioEnabled = false;
+                }
+            }
+
+            playBeeSound() {
+                if (!this.audioContext || !this.audioEnabled) return;
+                
+                try {
+                    const oscillator = this.audioContext.createOscillator();
+                    const gainNode = this.audioContext.createGain();
+                    
+                    // Bee buzzing sound
+                    oscillator.frequency.setValueAtTime(150, this.audioContext.currentTime);
+                    oscillator.frequency.exponentialRampToValueAtTime(250, this.audioContext.currentTime + 0.1);
+                    oscillator.frequency.exponentialRampToValueAtTime(150, this.audioContext.currentTime + 0.2);
+                    oscillator.type = 'sawtooth';
+                    
+                    gainNode.gain.setValueAtTime(0, this.audioContext.currentTime);
+                    gainNode.gain.linearRampToValueAtTime(0.1 * this.masterVolume, this.audioContext.currentTime + 0.01);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.3);
+                    
+                    oscillator.connect(gainNode);
+                    gainNode.connect(this.audioContext.destination);
+                    
+                    oscillator.start();
+                    oscillator.stop(this.audioContext.currentTime + 0.3);
+                } catch (error) {
+                    console.log('Bee sound error:', error);
+                }
+            }
+
+            playPlantSound(plantType) {
+                if (!this.audioContext || !this.audioEnabled) return;
+                
+                try {
+                    const oscillator = this.audioContext.createOscillator();
+                    const gainNode = this.audioContext.createGain();
+                    
+                    // Different sounds for different plants
+                    const plantSounds = {
+                        burdock_greater: { freq: 523, type: 'sine' }, // C5 - bright and cheerful
+                        senna: { freq: 440, type: 'triangle' },   // A4 - warm
+                        prickly_pear_cactus: { freq: 349, type: 'sine' },      // F4 - gentle
+                        martagon_lily: { freq: 196, type: 'sawtooth' },  // G3 - earthy
+                        cursed_buttercup: { freq: 131, type: 'square' },    // C3 - harsh
+                        adders_tongue_fern: { freq: 587, type: 'sine' },
+                        common_columbine: { freq: 392, type: 'triangle' },
+                        scottish_bluebell: { freq: 294, type: 'sine' },
+                        calamus: { freq: 220, type: 'sawtooth' },
+                        milk_thistle: { freq: 165, type: 'square' },
+                        levander: { freq: 110, type: 'square' }
+                    };
+                    
+                    const sound = plantSounds[plantType] || plantSounds.burdock_greater;
+                    
+                    oscillator.frequency.setValueAtTime(sound.freq, this.audioContext.currentTime);
+                    oscillator.type = sound.type;
+                    
+                    gainNode.gain.setValueAtTime(0, this.audioContext.currentTime);
+                    gainNode.gain.linearRampToValueAtTime(0.2 * this.masterVolume, this.audioContext.currentTime + 0.05);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.4);
+                    
+                    oscillator.connect(gainNode);
+                    gainNode.connect(this.audioContext.destination);
+                    
+                    oscillator.start();
+                    oscillator.stop(this.audioContext.currentTime + 0.4);
+                } catch (error) {
+                    console.log('Plant sound error:', error);
+                }
+            }
+
+            playPollinationSound() {
+                if (!this.audioContext || !this.audioEnabled) return;
+                
+                try {
+                    // Create a magical chime sound
+                    const frequencies = [523, 659, 784]; // C5, E5, G5
+                    
+                    frequencies.forEach((freq, index) => {
+                        setTimeout(() => {
+                            const oscillator = this.audioContext.createOscillator();
+                            const gainNode = this.audioContext.createGain();
+                            
+                            oscillator.frequency.setValueAtTime(freq, this.audioContext.currentTime);
+                            oscillator.type = 'sine';
+                            
+                            gainNode.gain.setValueAtTime(0, this.audioContext.currentTime);
+                            gainNode.gain.linearRampToValueAtTime(0.15 * this.masterVolume, this.audioContext.currentTime + 0.02);
+                            gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.5);
+                            
+                            oscillator.connect(gainNode);
+                            gainNode.connect(this.audioContext.destination);
+                            
+                            oscillator.start();
+                            oscillator.stop(this.audioContext.currentTime + 0.5);
+                        }, index * 100);
+                    });
+                } catch (error) {
+                    console.log('Pollination sound error:', error);
+                }
+            }
+
+            toggleAudio() {
+                this.audioEnabled = !this.audioEnabled;
+                const toggle = document.getElementById('audioToggle');
+                
+                if (this.audioEnabled) {
+                    toggle.innerHTML = '<span>🔊</span><span>Sound On</span>';
+                    toggle.classList.remove('muted');
+                    this.backgroundMusic.muted = false;
+                } else {
+                    toggle.innerHTML = '<span>🔇</span><span>Sound Off</span>';
+                    toggle.classList.add('muted');
+                    this.backgroundMusic.muted = true;
+                }
+            }
+
+            setVolume(volume) {
+                this.masterVolume = volume;
+                this.backgroundMusic.volume = this.masterVolume;
+                document.getElementById('musicVolume').textContent = Math.round(this.masterVolume * 100) + '%';
+                
+                
+                // Update music info
+                document.getElementById('musicInfo').textContent = 
+                    `Music volume increases with bee activity (current: ${Math.round(this.masterVolume * 100)}%)`;
+            }
+            
+            updateMusicVolume() {
+                // Volume increases with bee count: 25% + 0.01% per bee, capped at 50%
+                const beeCount = this.bees.length;
+                const newVolume = Math.min(0.25 + (0.01 * beeCount), 0.5);
+                this.setVolume(newVolume);
+            }
+
+            setupEventListeners() {
+                // Garden click to plant
+                this.garden.addEventListener('click', async (e) => {
+                    // Resume audio context on first user interaction
+                    if (!this.audioContext) {
+                        await this.initAudio();
+                    }
+                    
+                    if (this.audioContext && this.audioContext.state === 'suspended') {
+                        await this.audioContext.resume();
+                    }
+                    
+                    // Start background music if needed
+                    if (this.backgroundMusic.paused) {
+                        this.backgroundMusic.play().catch(e => console.log('Music play failed:', e));
+                    }
+                    
+                    if (!e.target.classList.contains('plant-option') && 
+                        !e.target.closest('.plant-menu') && 
+                        !e.target.closest('.stats') &&
+                        !e.target.closest('.audio-controls')) {
+                        this.plantFlower(e.clientX, e.clientY);
+                    }
+                });
+
+                // Plant type selection
+                document.querySelectorAll('.plant-option').forEach(option => {
+                    option.addEventListener('click', () => {
+                        document.querySelector('.plant-option.selected').classList.remove('selected');
+                        option.classList.add('selected');
+                        this.selectedPlantType = option.dataset.plant;
+                    });
+                });
+
+                // Audio controls
+                document.getElementById('audioToggle').addEventListener('click', () => {
+                    this.toggleAudio();
+                });
+
+                
+            }
+
+            createInitialBees() {
+                for (let i = 0; i < 3; i++) {
+                    this.createBee();
+                }
+            }
+
+            createBee() {
+			    const isLadybug = Math.random() > 0.5; // 50% šance na berušku
+			    const insect = document.createElement('div');
+			    insect.className = isLadybug ? 'ladybug' : 'bee';
+			    insect.style.left = Math.random() * (window.innerWidth - 20) + 'px';
+			    insect.style.top = Math.random() * (window.innerHeight - 100) + 100 + 'px';
+			    
+			    const beeData = {
+			        element: insect,
+			        isLadybug: isLadybug,
+			        x: parseFloat(insect.style.left),
+			        y: parseFloat(insect.style.top),
+			        targetX: null,
+			        targetY: null,
+			        speed: 2 + Math.random() * 2,
+			        targetPlant: null,
+			        lastPollination: 0,
+			        cooldownUntil: 0,
+			        waitingToLeave: false
+			    };
+			    
+			    this.bees.push(beeData);
+			    this.garden.appendChild(insect);
+			    this.updateStats();
+			    this.updateMusicVolume();
+			}
+
+            plantFlower(x, y) {
+                const plantType = this.plantTypes[this.selectedPlantType];
+                const plant = document.createElement('div');
+                plant.className = 'plant';
+                const img = document.createElement('img');
+                img.src = plantType.image;
+                img.alt = this.selectedPlantType;
+                plant.appendChild(img);
+                plant.style.left = (x - plantType.size / 2) + 'px';
+                plant.style.top = (y - plantType.size / 2) + 'px';
+                
+                if (plantType.attraction > 0.6) {
+                    plant.classList.add('attractive');
+                } else if (plantType.attraction < 0) {
+                    plant.classList.add('unattractive');
+                }
+
+                const plantData = {
+                    element: plant,
+                    type: this.selectedPlantType,
+                    x: x,
+                    y: y,
+                    attraction: plantType.attraction,
+                    lastVisited: 0
+                };
+
+                this.plants.push(plantData);
+                this.garden.appendChild(plant);
+                this.updateStats();
+                
+                // Play planting sound
+                this.playPlantSound(this.selectedPlantType);
+                
+                // Create sparkle effect
+                this.createSparkles(x, y);
+                
+                // Add a bee for every 5 plants
+                if (this.plants.length % 5 === 0) {
+                    this.createBee();
+                }
+                
+                // Immediately update bee targets
+                this.updateBeeTargets();
+            }
+
+            createSparkles(x, y) {
+                for (let i = 0; i < 6; i++) {
+                    setTimeout(() => {
+                        const sparkle = document.createElement('div');
+                        sparkle.className = 'sparkle';
+                        sparkle.style.left = x + (Math.random() - 0.5) * 40 + 'px';
+                        sparkle.style.top = y + (Math.random() - 0.5) * 40 + 'px';
+                        this.garden.appendChild(sparkle);
+                        
+                        setTimeout(() => sparkle.remove(), 1000);
+                    }, i * 100);
+                }
+            }
+
+            updateBeeTargets() {
+			    this.bees.forEach(bee => {
+			        // Skip if bee is in cooldown or already has a target
+			        if (bee.waitingToLeave || Date.now() < bee.cooldownUntil) return;
+			        
+			        // If bee has no target or current target is no longer valid
+			        if (!bee.targetPlant || !this.plants.includes(bee.targetPlant)) {
+			            let bestPlant = null;
+			            let bestScore = -Infinity;
+			            
+			            // Find the most attractive plant that's not recently visited
+			            this.plants.forEach(plant => {
+			                // Skip if plant was recently visited by this bee
+			                if (Date.now() - plant.lastVisited < 10000) return;
+			                
+			                const dx = plant.x - bee.x;
+			                const dy = plant.y - bee.y;
+			                const distance = Math.sqrt(dx * dx + dy * dy);
+			                
+			                // Score based on attraction and distance (higher is better)
+			                const score = plant.attraction / (distance + 50); // +50 to avoid division by zero
+			                
+			                if (score > bestScore) {
+			                    bestScore = score;
+			                    bestPlant = plant;
+			                }
+			            });
+			            
+			            if (bestPlant) {
+			                bee.targetX = bestPlant.x;
+			                bee.targetY = bestPlant.y;
+			                bee.targetPlant = bestPlant;
+			                bestPlant.lastVisited = Date.now();
+			            } else {
+			                // No attractive plants found - fly randomly
+			                bee.targetX = Math.random() * window.innerWidth;
+			                bee.targetY = 200 + Math.random() * (window.innerHeight - 300);
+			                bee.targetPlant = null;
+			            }
+			        }
+			    });
+			}
+
+
+
+            startBeeMovement() {
+                setInterval(() => {
+                    this.updateBeeTargets();
+                    this.moveBees();
+                }, 50);
+            }
+
+            moveBees() {
+			    this.bees.forEach(bee => {
+			        if (bee.targetX === null || bee.targetY === null) return;
+			
+			        const dx = bee.targetX - bee.x;
+			        const dy = bee.targetY - bee.y;
+			        const distance = Math.sqrt(dx * dx + dy * dy);
+			
+			        if (distance > 5) {
+			            bee.element.classList.add('flying');
+			            const moveX = (dx / distance) * bee.speed;
+			            const moveY = (dy / distance) * bee.speed;
+			
+			            bee.x += moveX;
+			            bee.y += moveY;
+			
+			            bee.element.style.left = bee.x + 'px';
+			            bee.element.style.top = bee.y + 'px';
+			
+			            const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+			            bee.element.style.transform = `rotate(${angle}deg)`;
+			
+			            if (Math.random() < 0.005) {
+			                this.playBeeSound();
+			            }
+			        } else {
+			            bee.element.classList.remove('flying');
+			
+			            if (bee.targetPlant && Date.now() - bee.lastPollination > 2000) {
+			                this.pollinate(bee, bee.targetPlant);
+			                bee.lastPollination = Date.now();
+			                
+			                // Start countdown to leave after 5 seconds
+			                bee.waitingToLeave = true;
+			                setTimeout(() => {
+			                    bee.waitingToLeave = false;
+			                    bee.cooldownUntil = Date.now() + 5000; // 5s cooldown before next attraction
+			                    bee.targetPlant = null;
+			                    
+			                    // Set random target for the bee to fly to
+			                    bee.targetX = Math.random() * window.innerWidth;
+			                    bee.targetY = 200 + Math.random() * (window.innerHeight - 300);
+			                }, 5000);
+			            }
+			        }
+			    });
+			}
+
+
+            pollinate(bee, plant) {
+                this.pollinationCount++;
+                this.updateStats();
+                
+                // Play magical pollination sound
+                this.playPollinationSound();
+                
+                // Visual feedback
+                plant.element.style.animation = 'none';
+                plant.element.offsetHeight; // Trigger reflow
+                plant.element.style.animation = 'plantGrow 0.3s ease-out';
+                
+                // Create more sparkles
+                this.createSparkles(plant.x, plant.y);
+                
+                // Bee gets temporary speed boost
+                const originalSpeed = bee.speed;
+                bee.speed *= 1.5;
+                setTimeout(() => {
+                    bee.speed = originalSpeed;
+                }, 1000);
+            }
+
+            updateStats() {
+                document.getElementById('plantCount').textContent = this.plants.length;
+                document.getElementById('beeCount').textContent = this.bees.length;
+                document.getElementById('pollinationCount').textContent = this.pollinationCount;
+                document.getElementById('musicVolume').textContent = Math.round(this.masterVolume * 100) + '%';
+            }
+        }
+
+        // Initialize the garden when page loads
+        window.addEventListener('DOMContentLoaded', () => {
+            const garden = new DigitalGarden();
+            
+            // Create floating elements for atmosphere
+            function createFloatingElements() {
+                const elements = ['butterfly.png', 'flower.png', 'leaf.png'];
+                setInterval(() => {
+                    if (Math.random() < 0.3) {
+                        const element = document.createElement('div');
+                        element.className = 'floating-element';
+                        const img = document.createElement('img');
+                        img.src = elements[Math.floor(Math.random() * elements.length)];
+                        img.alt = 'Floating element';
+                        element.appendChild(img);
+                        element.style.position = 'absolute';
+                        element.style.left = '-50px';
+                        element.style.top = Math.random() * window.innerHeight + 'px';
+                        element.style.opacity = '0.6';
+                        element.style.pointerEvents = 'none';
+                        element.style.animation = 'floatAcross 15s linear forwards';
+                        document.body.appendChild(element);
+                        
+                        setTimeout(() => element.remove(), 15000);
+                    }
+                }, 3000);
+            }
+
+            // Add floating animation
+            const floatAnimation = `
+                @keyframes floatAcross {
+                    0% { transform: translateX(-50px) rotate(0deg); opacity: 0; }
+                    10% { opacity: 0.6; }
+                    90% { opacity: 0.6; }
+                    100% { transform: translateX(${window.innerWidth + 50}px) rotate(360deg); opacity: 0; }
+                }
+            `;
+            
+            const style = document.createElement('style');
+            style.textContent = floatAnimation;
+            document.head.appendChild(style);
+            
+            setTimeout(createFloatingElements, 2000);
+        });
+    </script>
+</body>
+</html>
