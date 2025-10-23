@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Signa — Daily Astrology & Biorhythm Guidance</title>
+    <meta name="description" content="Personalized daily & tomorrow predictions based on astrology and your biorhythm. Includes menstrual cycle tracking and local-first data privacy.">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Optional: Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+      :root{
+        --accent: #9b6cff; /* fallback accent, swap to match your icon */
+        --muted: #6c6f76;
+        --card-bg: rgba(255,255,255,0.65);
+      }
+      body{
+        font-family: Inter, system-ui, -apple-system, 'Helvetica Neue', Arial;
+        background: linear-gradient(180deg, #faf8ff 0%, #fff 40%);
+        color:#111;
+      }
+      .hero{
+        padding:6rem 0 5rem;
+      }
+      .badge-accent{
+        background: linear-gradient(90deg,var(--accent), #6fd3c7);
+        color: white;
+      }
+      .feature-card{
+        background: var(--card-bg);
+        border-radius: 14px;
+        padding:1.6rem;
+        box-shadow: 0 6px 20px rgba(16,24,40,0.06);
+        backdrop-filter: blur(6px);
+      }
+      .app-screenshot{
+        max-width: 360px; border-radius: 28px; box-shadow: 0 10px 40px rgba(16,24,40,0.12);
+      }
+      footer{font-size:0.9rem; color:var(--muted);}
+      .cta-btn{
+        border-radius: 999px;
+        padding: 0.75rem 1.4rem;
+        font-weight:600;
+      }
+      .privacy-pill{font-size:0.85rem; padding:0.25rem 0.6rem; background:#f3f4f6; border-radius:999px}
+      .zodiac-wheel{width:120px;height:120px;border-radius:999px;object-fit:cover}
+      @media (max-width:767px){
+        .hero{padding:3.5rem 0;}
+      }
+    </style>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-3">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+          <img src="AppIcon.png" alt="Signa app icon" width="44" height="44" style="border-radius:10px;object-fit:cover">
+          <span class="fw-bold">Signa</span>
+        </a>
+        <div class="d-flex gap-2 align-items-center">
+          <span class="privacy-pill">Local-first • Private</span>
+          <a class="btn btn-outline-secondary btn-sm" href="#download">Download</a>
+        </div>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="container">
+        <div class="row align-items-center gy-4">
+          <div class="col-lg-6">
+            <span class="badge badge-accent rounded-pill px-3 py-2 mb-3">Daily guidance • Private data</span>
+            <h1 class="display-6 fw-bold mb-3">Know your day. Move with intention.</h1>
+            <p class="lead text-muted mb-4">Signa blends astrology with your personal biorhythm — including menstrual cycle tracking — to give clear, actionable predictions for today and tomorrow. Know when to push, when to pause, and where your energy is strongest.</p>
+
+            <div class="d-flex gap-3">
+              <a id="download" class="btn btn-primary cta-btn d-inline-flex align-items-center" href="#" role="button">
+                <i class="bi bi-download me-2"></i> Download on the App Store
+              </a>
+              <a class="btn btn-outline-secondary cta-btn" href="#features">How it works</a>
+            </div>
+
+            <p class="mt-3 text-muted small">App Store link placeholder — replace with your App Store URL before publishing.</p>
+
+            <ul class="list-unstyled mt-4 text-muted">
+              <li class="mb-2"><i class="bi bi-check2-circle text-success me-2"></i> Personal daily & tomorrow forecasts</li>
+              <li class="mb-2"><i class="bi bi-check2-circle text-success me-2"></i> Menstrual cycle support & biorhythm insights</li>
+              <li class="mb-2"><i class="bi bi-check2-circle text-success me-2"></i> Your data stays on Signa servers — never shared</li>
+            </ul>
+          </div>
+
+          <div class="col-lg-6 text-center">
+            <div class="mx-auto" style="max-width:420px">
+              <img src="assets/AppIcon2.png" alt="Signa app icon" class="zodiac-wheel mb-3">
+              <!-- Placeholder device mockup -->
+              <div class="d-flex justify-content-center">
+                <img src="assets/placeholder-screenshot.png" alt="Signa app preview" class="app-screenshot"/>
+              </div>
+              <p class="text-muted small mt-3">Replace screenshot with real app screens. Use 3:6 aspect screenshots for best fit.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="features" class="py-5">
+        <div class="container">
+          <div class="text-center mb-5">
+            <h2 class="fw-bold mb-2">What Signa gives you</h2>
+            <p class="text-muted">A balanced mix of practical advice and spiritual insight — presented simply so you can act with clarity.</p>
+          </div>
+
+          <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+              <div class="feature-card h-100">
+                <h5 class="mb-2">Daily & Tomorrow Forecasts</h5>
+                <p class="text-muted small mb-0">Quick, actionable guidance for what to start, delay, or avoid each day.</p>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+              <div class="feature-card h-100">
+                <h5 class="mb-2">Biorhythm Insights</h5>
+                <p class="text-muted small mb-0">Physical, emotional, and intellectual cycles — visualized and explained.</p>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+              <div class="feature-card h-100">
+                <h5 class="mb-2">Menstrual Cycle Tracking</h5>
+                <p class="text-muted small mb-0">For those who menstruate: predictions adapt to cycle phases for personalized guidance.</p>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+              <div class="feature-card h-100">
+                <h5 class="mb-2">Private, Local-First Storage</h5>
+                <p class="text-muted small mb-0">All personal info stays on Signa’s servers and is never sold or shared with third-party cloud corporations.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-5 bg-light">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-md-6">
+              <h3 class="fw-bold">Science + Intuition</h3>
+              <p class="text-muted">Signa uses your birth data, planetary positions, and your personal biorhythm to produce a concise forecast. It’s not only about destiny — it’s about practical timing. When energy aligns, make the move. When it doesn’t, conserve and plan.</p>
+
+              <ul class="text-muted small">
+                <li>Planetary insights mapped to personal cycles</li>
+                <li>Clear suggestions for tasks and rest</li>
+                <li>Personalized for every sign and body rhythm</li>
+              </ul>
+            </div>
+            <div class="col-md-6 text-center">
+              <img src="assets/placeholder-chart.png" alt="biorhythm chart" class="img-fluid rounded-3" style="max-width:420px;">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-5">
+        <div class="container text-center">
+          <h3 class="fw-bold mb-3">Privacy-first by design</h3>
+          <p class="text-muted mb-4">We keep your data secure and private. Signa stores predictions and cycle data on our servers and does not share or sell personal data to third parties.</p>
+          <div class="d-flex justify-content-center gap-3">
+            <a class="btn btn-primary cta-btn" href="#">Get Signa on the App Store</a>
+            <a class="btn btn-outline-secondary cta-btn" href="#faq">Read FAQ</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="testimonials" class="py-5 bg-white">
+        <div class="container">
+          <div class="text-center mb-4">
+            <h4 class="fw-bold">Loved by early users</h4>
+            <p class="text-muted">Short, genuine quotes about how Signa helped plan better days.</p>
+          </div>
+
+          <div class="row g-4">
+            <div class="col-md-4">
+              <blockquote class="p-4 border rounded-3" style="background:#fff;">
+                <p class="mb-2">"Signa helped me pick the right days for meetings and deep work. My weeks feel calmer."</p>
+                <footer class="text-muted small">— Jana, designer</footer>
+              </blockquote>
+            </div>
+            <div class="col-md-4">
+              <blockquote class="p-4 border rounded-3" style="background:#fff;">
+                <p class="mb-2">"The menstrual insights are surprisingly practical — I plan my workouts around them now."</p>
+                <footer class="text-muted small">— Petra, student</footer>
+              </blockquote>
+            </div>
+            <div class="col-md-4">
+              <blockquote class="p-4 border rounded-3" style="background:#fff;">
+                <p class="mb-2">"Clear, private, and easy to use. The forecasts are short and actionable."</p>
+                <footer class="text-muted small">— Tom, freelancer</footer>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" class="py-5">
+        <div class="container">
+          <h4 class="fw-bold text-center mb-4">FAQ</h4>
+          <div class="accordion" id="faqAccordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="faq-heading-1">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-1" aria-expanded="false" aria-controls="faq-1">How are predictions generated?</button>
+              </h2>
+              <div id="faq-1" class="accordion-collapse collapse" aria-labelledby="faq-heading-1" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">Signa combines planetary positions (astrology) with calculated biorhythms based on your profile. The result is a short, practical forecast for today and tomorrow.</div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="faq-heading-2">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-2" aria-expanded="false" aria-controls="faq-2">Is my data private?</button>
+              </h2>
+              <div id="faq-2" class="accordion-collapse collapse" aria-labelledby="faq-heading-2" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">Yes. All user data is stored on Signa’s servers and is never shared with global cloud corporations. You control your personal settings.</div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="faq-heading-3">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-3" aria-expanded="false" aria-controls="faq-3">Can men use Signa?</button>
+              </h2>
+              <div id="faq-3" class="accordion-collapse collapse" aria-labelledby="faq-heading-3" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">Absolutely. Men receive the same daily and tomorrow predictions and biorhythm insights. Menstrual tracking is an optional feature for those who need it.</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="py-4 bg-white">
+      <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-3">
+          <img src="assets/AppIcon2.png" alt="Signa icon" width="44" height="44" style="border-radius:10px">
+          <div>
+            <div class="fw-bold">Signa</div>
+            <div class="text-muted small">Personal daily guidance • Privacy-first</div>
+          </div>
+        </div>
+
+        <div class="text-muted small mt-3 mt-md-0">© <span id="year">2025</span> Signa. All rights reserved. <a href="#privacy" class="ms-2">Privacy</a></div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle (includes Popper) - minimal JS usage required for accordion, dropdowns -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // small helper to set year automatically
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
