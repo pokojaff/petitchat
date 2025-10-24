@@ -1,26 +1,30 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Signa — Daily Astrology & Biorhythm Predictions</title>
-    <meta name="description" content="Get personalized daily horoscope predictions for all 12 zodiac signs: Aries, Taurus, Gemini, Cancer, Leo, Virgo, Libra, Scorpio, Sagittarius, Capricorn, Aquarius, Pisces. Astrology readings with biorhythm insights and tomorrow's forecast.">
-    <meta name="keywords" content="horoscope, daily horoscope, zodiac signs, astrology, zodiac predictions, Aries, Taurus, Gemini, Cancer, Leo, Virgo, Libra, Scorpio, Sagittarius, Capricorn, Aquarius, Pisces, birth chart, horoscope today, horoscope tomorrow, astrological forecast, biorhythm, menstrual cycle astrology, sign characteristics">
+    <meta name="description"
+          content="Get personalized daily horoscope predictions for all 12 zodiac signs: Aries, Taurus, Gemini, Cancer, Leo, Virgo, Libra, Scorpio, Sagittarius, Capricorn, Aquarius, Pisces. Astrology readings with biorhythm insights and tomorrow's forecast.">
+    <meta name="keywords"
+          content="horoscope, daily horoscope, zodiac signs, astrology, zodiac predictions, Aries, Taurus, Gemini, Cancer, Leo, Virgo, Libra, Scorpio, Sagittarius, Capricorn, Aquarius, Pisces, birth chart, horoscope today, horoscope tomorrow, astrological forecast, biorhythm, menstrual cycle astrology, sign characteristics">
     <meta name="author" content="Signa">
     <link rel="canonical" href="https://petitchat.app/signa/">
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://petitchat.app/signa/">
     <meta property="og:title" content="Signa — Daily Astrology & Biorhythm Predictions">
-    <meta property="og:description" content="Personalized daily horoscope for all 12 zodiac signs. Get astrology predictions, biorhythm insights, and tomorrow's forecast.">
+    <meta property="og:description"
+          content="Personalized daily horoscope for all 12 zodiac signs. Get astrology predictions, biorhythm insights, and tomorrow's forecast.">
     <meta property="og:image" content="https://petitchat.app/signa/AppIcon.png">
-    
+
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://petitchat.app/signa/">
     <meta property="twitter:title" content="Signa — Daily Astrology & Biorhythm Predictions">
-    <meta property="twitter:description" content="Personalized daily horoscope for all 12 zodiac signs. Get astrology predictions, biorhythm insights, and tomorrow's forecast.">
+    <meta property="twitter:description"
+          content="Personalized daily horoscope for all 12 zodiac signs. Get astrology predictions, biorhythm insights, and tomorrow's forecast.">
     <meta property="twitter:image" content="https://petitchat.app/signa/AppIcon.png">
 
     <!-- Bootstrap 5 CSS -->
@@ -30,335 +34,403 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
     <style>
-      :root{
-        --accent: #9b6cff; /* fallback accent, swap to match your icon */
-        --muted: #6c6f76;
-        --card-bg: rgba(255,255,255,0.65);
-      }
-      body{
-        font-family: Inter, system-ui, -apple-system, 'Helvetica Neue', Arial;
-        background: linear-gradient(180deg, #faf8ff 0%, #fff 40%);
-        color:#111;
-      }
-      .hero{
-        padding:6rem 0 5rem;
-      }
-      .badge-accent{
-        background: linear-gradient(90deg,var(--accent), #6fd3c7);
-        color: white;
-      }
-      .feature-card{
-        background: var(--card-bg);
-        border-radius: 14px;
-        padding:1.6rem;
-        box-shadow: 0 6px 20px rgba(16,24,40,0.06);
-        backdrop-filter: blur(6px);
-      }
-      .app-screenshot{
-        width: 100%;
-        max-width: 100%;
-        border-radius: 40px; 
-        box-shadow: 0 15px 50px rgba(16,24,40,0.2), 0 8px 20px rgba(16,24,40,0.15);
-      }
-      .screenshot-section{
-        margin-bottom: 2rem;
-      }
-      @media (min-width:768px){
-        .screenshot-section .row{
-          align-items: center;
+        :root{
+          --accent: #9b6cff; /* fallback accent, swap to match your icon */
+          --muted: #6c6f76;
+          --card-bg: rgba(255,255,255,0.65);
         }
-      }
-      footer{font-size:0.9rem; color:var(--muted);}
-      .cta-btn{
-        border-radius: 999px;
-        padding: 0.75rem 1.4rem;
-        font-weight:600;
-      }
-      .btn-primary{
-        background-color: rgb(154, 107, 201);
-        border-color: rgb(154, 107, 201);
-      }
-      .btn-primary:hover{
-        background-color: rgb(134, 87, 181);
-        border-color: rgb(134, 87, 181);
-      }
-      .btn-primary:focus, .btn-primary:active{
-        background-color: rgb(134, 87, 181);
-        border-color: rgb(134, 87, 181);
-      }
-      .accordion-button:not(.collapsed){
-        background-color: rgba(200, 137, 203, 0.1);
-        color: rgb(145, 107, 201);
-      }
-      .accordion-button:focus{
-        border-color: rgb(200, 137, 203);
-        box-shadow: 0 0 0 0.25rem rgba(200, 137, 203, 0.25);
-      }
-      .privacy-pill{font-size:0.85rem; padding:0.25rem 0.6rem; background:#f3f4f6; border-radius:999px}
-      .zodiac-wheel{width:120px;height:120px;border-radius:999px;object-fit:cover}
-      @media (max-width:767px){
-        .hero{padding:3.5rem 0;}
-      }
+        body{
+          font-family: Inter, system-ui, -apple-system, 'Helvetica Neue', Arial;
+          background: linear-gradient(180deg, #faf8ff 0%, #fff 40%);
+          color:#111;
+        }
+        .hero{
+          padding:6rem 0 5rem;
+        }
+        .badge-accent{
+          background: linear-gradient(90deg,var(--accent), #6fd3c7);
+          color: white;
+        }
+        .feature-card{
+          background: var(--card-bg);
+          border-radius: 14px;
+          padding:1.6rem;
+          box-shadow: 0 6px 20px rgba(16,24,40,0.06);
+          backdrop-filter: blur(6px);
+        }
+        .app-screenshot{
+          width: 100%;
+          max-width: 100%;
+          border-radius: 40px;
+          box-shadow: 0 15px 50px rgba(16,24,40,0.2), 0 8px 20px rgba(16,24,40,0.15);
+        }
+        .screenshot-section{
+          margin-bottom: 2rem;
+        }
+        @media (min-width:768px){
+          .screenshot-section .row{
+            align-items: center;
+          }
+        }
+        footer{font-size:0.9rem; color:var(--muted);}
+        .cta-btn{
+          border-radius: 999px;
+          padding: 0.75rem 1.4rem;
+          font-weight:600;
+        }
+        .btn-primary{
+          background-color: rgb(154, 107, 201);
+          border-color: rgb(154, 107, 201);
+        }
+        .btn-primary:hover{
+          background-color: rgb(134, 87, 181);
+          border-color: rgb(134, 87, 181);
+        }
+        .btn-primary:focus, .btn-primary:active{
+          background-color: rgb(134, 87, 181);
+          border-color: rgb(134, 87, 181);
+        }
+        .accordion-button:not(.collapsed){
+          background-color: rgba(200, 137, 203, 0.1);
+          color: rgb(154, 107, 201);
+        }
+        .accordion-button:focus{
+          border-color: rgb(200, 137, 203);
+          box-shadow: 0 0 0 0.25rem rgba(200, 137, 203, 0.25);
+        }
+        .privacy-pill{font-size:0.85rem; padding:0.25rem 0.6rem; background:#f3f4f6; border-radius:999px}
+        .zodiac-wheel{width:120px;height:120px;border-radius:999px;object-fit:cover}
+        @media (max-width:767px){
+          .hero{padding:3.5rem 0;}
+        }
+        .text-violet { color: rgb(134, 87, 181); }
     </style>
-    
+
     <!-- Structured Data (JSON-LD) for SEO -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Signa",
-      "applicationCategory": "LifestyleApplication",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "operatingSystem": "iOS",
-      "description": "Daily horoscope and zodiac sign predictions app. Get personalized astrology readings for all 12 zodiac signs: Aries, Taurus, Gemini, Cancer, Leo, Virgo, Libra, Scorpio, Sagittarius, Capricorn, Aquarius, and Pisces. Includes biorhythm insights and tomorrow's forecast.",
-      "url": "https://petitchat.app/signa/",
-      "image": "https://petitchat.app/signa/AppIcon.png",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "ratingCount": "150"
-      },
-      "keywords": "horoscope, zodiac signs, astrology, daily predictions, Aries, Taurus, Gemini, Cancer, Leo, Virgo, Libra, Scorpio, Sagittarius, Capricorn, Aquarius, Pisces, biorhythm"
-    }
+        {
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "Signa",
+            "applicationCategory": "LifestyleApplication",
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+            },
+            "operatingSystem": "iOS",
+            "description": "Daily horoscope and zodiac sign predictions app. Get personalized astrology readings for all 12 zodiac signs: Aries, Taurus, Gemini, Cancer, Leo, Virgo, Libra, Scorpio, Sagittarius, Capricorn, Aquarius, and Pisces. Includes biorhythm insights and tomorrow's forecast.",
+            "url": "https://petitchat.app/signa/",
+            "image": "https://petitchat.app/signa/AppIcon.png",
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.8",
+                "ratingCount": "150"
+            },
+            "keywords": "horoscope, zodiac signs, astrology, daily predictions, Aries, Taurus, Gemini, Cancer, Leo, Virgo, Libra, Scorpio, Sagittarius, Capricorn, Aquarius, Pisces, biorhythm"
+        }
     </script>
-  </head>
-  <body>
+</head>
+<body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-3">
-      <div class="container">
+<nav class="navbar navbar-expand-lg navbar-light bg-transparent py-3">
+    <div class="container">
         <a class="navbar-brand d-flex align-items-center gap-2" href="#">
-          <img src="AppIcon.png" alt="Signa app icon" width="44" height="44" style="border-radius:10px;object-fit:cover">
-          <div class="d-flex align-items-baseline gap-2">
-            <span class="fw-bold fs-3">Signa</span>
-            <span class="fw-lighter fs-6">Your sign. Your cycle. Your balance.</span>
-          </div>
+            <img src="AppIcon.png" alt="Signa app icon" width="44" height="44"
+                 style="border-radius:10px;object-fit:cover">
+            <div class="d-flex align-items-baseline gap-2">
+                <span class="fw-bold fs-3">Signa</span>
+                <span class="fw-lighter fs-6 text-muted">Your sign. Your cycle. Your timing.</span>
+            </div>
         </a>
         <div class="d-flex gap-2 align-items-center">
 
-          <a class="btn btn-outline-secondary btn-sm" href="#download">Download</a>
+            <a class="btn btn-outline-secondary btn-sm" href="#download">Download</a>
         </div>
-      </div>
-    </nav>
+    </div>
+</nav>
 
-    <header class="hero">
-      <div class="container">
+<header class="hero">
+    <div class="container">
         <div class="row align-items-center gy-4">
-          <div class="col-lg-9">
-            <h1 class="display-6 fw-bold mb-3">Daily Horoscope & Personal Cycles Predictions</h1>
-            <p class="lead text-muted mb-4">Signa blends astrology with your personal biorhythm — including menstrual cycle tracking — to give clear, actionable horoscope predictions for today and tomorrow. Get personalized zodiac forecasts for You.</p>
+            <div class="col-lg-9">
+                <h1 class="display-6 fw-bold mb-3"><span class="text-violet">Your</span> sign. <span
+                        class="text-violet">Your</span> cycle. <span class="text-violet">Your</span> timing.</h1>
 
-            <div class="d-flex gap-3">
-              <a id="download" class="btn btn-primary cta-btn d-inline-flex align-items-center" href="#" role="button">
-                <i class="bi bi-download me-2"></i> Download on the App Store
-              </a>
-              <a class="btn btn-outline-secondary cta-btn" href="#features">How it works</a>
+                <p class="lead text-muted mb-4">Signa aligns your zodiac, biorhythm, and personal cycle to bring you
+                    clear daily predictions and insights for better timing each day.
+                    All in one private, beautifully simple app. Download today and live in rhythm with yourself.</p>
+                <p class="text-muted mt-3">
+                    For less than the price of a coffee <i class="bi bi-cup-hot"></i>
+                    , unlock a month of personalized predictions and take back control of your rhythm.
+                </p>
+
+                <div class="d-flex gap-3">
+                    <a id="download" class="btn btn-primary cta-btn d-inline-flex align-items-center" href="#"
+                       role="button">
+                        <i class="bi bi-download me-2"></i> Download on the App Store
+                    </a>
+                    <a class="btn btn-outline-secondary cta-btn" href="#features">How it works</a>
+                </div>
+
+                <ul class="list-unstyled mt-4 text-muted">
+                    <li class="mb-2"><i class="bi bi-check2-circle text-success me-2"></i> Daily horoscope predictions
+                        for all 12 zodiac signs
+                    </li>
+                    <li class="mb-2"><i class="bi bi-check2-circle text-success me-2"></i> Biorhythm and personal cycle
+                        insights combined with astrology readings
+                    </li>
+                    <li class="mb-2"><i class="bi bi-check2-circle text-success me-2"></i> Secure dedicated storage —
+                        never shared with third parties
+                    </li>
+                </ul>
             </div>
 
-            <ul class="list-unstyled mt-4 text-muted">
-              <li class="mb-2"><i class="bi bi-check2-circle text-success me-2"></i> Daily horoscope predictions for all 12 zodiac signs</li>
-              <li class="mb-2"><i class="bi bi-check2-circle text-success me-2"></i> Biorhythm insights combined with astrology readings</li>
-              <li class="mb-2"><i class="bi bi-check2-circle text-success me-2"></i> Secure dedicated storage — never shared with third parties</li>
-            </ul>
-          </div>
-
-          <div class="col-lg-3">
-            <!-- Empty space -->
-          </div>
+            <div class="col-lg-3">
+                <!-- Empty space -->
+            </div>
         </div>
-      </div>
-    </header>
+    </div>
+</header>
 
-    <!-- Screenshots Section -->
-    <section class="py-5" style="background: rgba(232,232,237,0.72);">
-      <div class="container">
+<!-- Screenshots Section -->
+<section class="py-5" style="background: rgba(232,232,237,0.72);">
+    <div class="container">
         <div class="row g-4 justify-content-center">
-          <div class="col-md-6 col-lg-3 text-center">
-            <img src="screen1.png" alt="Zodiac sign characteristics and horoscope profile for all 12 signs" class="app-screenshot">
-          </div>
-          <div class="col-md-6 col-lg-3 text-center">
-            <img src="screen2.png" alt="Daily horoscope predictions and today's zodiac forecast" class="app-screenshot">
-          </div>
-          <div class="col-md-6 col-lg-3 text-center">
-            <img src="screen3.png" alt="Tomorrow's horoscope and zodiac sign predictions" class="app-screenshot">
-          </div>
-          <div class="col-md-6 col-lg-3 text-center">
-            <img src="screen4.png" alt="Biorhythm chart and astrology insights for zodiac signs" class="app-screenshot">
-          </div>
+            <div class="col-md-6 col-lg-3 text-center">
+                <img src="screen1.png" alt="Zodiac sign characteristics and horoscope profile for all 12 signs"
+                     class="app-screenshot">
+            </div>
+            <div class="col-md-6 col-lg-3 text-center">
+                <img src="screen2.png" alt="Daily horoscope predictions and today's zodiac forecast"
+                     class="app-screenshot">
+            </div>
+            <div class="col-md-6 col-lg-3 text-center">
+                <img src="screen3.png" alt="Tomorrow's horoscope and zodiac sign predictions" class="app-screenshot">
+            </div>
+            <div class="col-md-6 col-lg-3 text-center">
+                <img src="screen4.png" alt="Biorhythm chart and astrology insights for zodiac signs"
+                     class="app-screenshot">
+            </div>
         </div>
-      </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Science + Intuition Section -->
-    <section class="py-5 bg-white">
-      <div class="container">
+<!-- Science + Intuition Section -->
+<section class="py-5 bg-white">
+    <div class="container">
         <div class="row align-items-center">
-          <div class="col-lg-9">
-            <h2 class="fw-bold">Astrology Science + Zodiac Intuition</h2>
-            <p class="lead text-muted mb-4">Signa uses your birth data, planetary positions, zodiac sign characteristics, and your personal biorhythm to produce accurate horoscope forecasts. It's not only about destiny — it's about practical timing for each zodiac sign. When energy aligns, make the move. When it doesn't, conserve and plan.</p>
+            <div class="col-lg-9">
+                <h2 class="fw-bold">Astrology Science + Zodiac Intuition</h2>
+                <p class="lead text-muted mb-4">Signa turns complex astrology and biorhythm data into clear daily
+                    guidance — so you know when to move, rest, or recharge. It’s not about destiny, but timing — your
+                    best timing.</p>
 
-            <ul class="list-unstyled text-muted">
-              <li class="mb-2"><i class="bi bi-check2-circle text-success me-2"></i> Planetary insights and zodiac sign compatibility mapped to personal cycles</li>
-              <li class="mb-2"><i class="bi bi-check2-circle text-success me-2"></i> Clear horoscope-based suggestions for daily tasks and rest</li>
-              <li class="mb-2"><i class="bi bi-check2-circle text-success me-2"></i> Personalized astrology predictions for every zodiac sign and biorhythm</li>
-            </ul>
-          </div>
-          <div class="col-lg-3">
-            <!-- Empty space on the right -->
-          </div>
+                <ul class="list-unstyled text-muted">
+                    <li class="mb-2"><i class="bi bi-check2-circle text-success me-2"></i> Planetary insights and zodiac
+                        sign compatibility mapped to personal cycles
+                    </li>
+                    <li class="mb-2"><i class="bi bi-check2-circle text-success me-2"></i> Clear horoscope-based
+                        suggestions for daily tasks and rest
+                    </li>
+                    <li class="mb-2"><i class="bi bi-check2-circle text-success me-2"></i> Personalized astrology
+                        predictions for every zodiac sign and biorhythm
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-3">
+                <!-- Empty space on the right -->
+            </div>
         </div>
-      </div>
+    </div>
+</section>
+
+<main>
+    <section id="features" class="py-5" style="background: rgba(232,232,237,0.72);">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold mb-2">Complete Horoscope Features for Your Sign</h2>
+                <p class="lead text-muted">A balanced mix of practical astrology advice and spiritual zodiac insight —
+                    personalized predictions for each of the 12 signs presented simply so you can act with clarity.</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card h-100">
+                        <h5 class="mb-2">Today & Tomorrow Horoscope</h5>
+                        <p class="text-muted small mb-0">Quick, actionable horoscope predictions for all 12 zodiac signs
+                            — what to start, delay, or avoid each day.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card h-100">
+                        <h5 class="mb-2">Biorhythm Energy Map</h5>
+                        <p class="text-muted small mb-0">Physical, emotional, and intellectual cycles combined with
+                            zodiac sign characteristics — visualized and explained.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card h-100">
+                        <h5 class="mb-2">Cycle-aware Zodiac Tracking</h5>
+                        <p class="text-muted small mb-0">For those who menstruate: horoscope predictions adapt to cycle
+                            phases for personalized zodiac guidance.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card h-100">
+                        <h5 class="mb-2">Your Data Stays Yours</h5>
+                        <p class="text-muted small mb-0">All personal horoscope and zodiac data is securely stored on
+                            dedicated storage — never provided to third parties or global cloud service providers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <main>
-      <section id="features" class="py-5" style="background: rgba(232,232,237,0.72);">
-        <div class="container">
-          <div class="text-center mb-5">
-            <h2 class="fw-bold mb-2">Complete Horoscope Features for All Zodiac Signs</h2>
-            <p class="lead text-muted">A balanced mix of practical astrology advice and spiritual zodiac insight — personalized predictions for each of the 12 signs presented simply so you can act with clarity.</p>
-          </div>
 
-          <div class="row g-4">
-            <div class="col-md-6 col-lg-3">
-              <div class="feature-card h-100">
-                <h5 class="mb-2">Daily Horoscope & Tomorrow's Zodiac Forecast</h5>
-                <p class="text-muted small mb-0">Quick, actionable horoscope predictions for all 12 zodiac signs — what to start, delay, or avoid each day.</p>
-              </div>
-            </div>
-
-            <div class="col-md-6 col-lg-3">
-              <div class="feature-card h-100">
-                <h5 class="mb-2">Biorhythm & Astrology Insights</h5>
-                <p class="text-muted small mb-0">Physical, emotional, and intellectual cycles combined with zodiac sign characteristics — visualized and explained.</p>
-              </div>
-            </div>
-
-            <div class="col-md-6 col-lg-3">
-              <div class="feature-card h-100">
-                <h5 class="mb-2">Menstrual Cycle & Zodiac Tracking</h5>
-                <p class="text-muted small mb-0">For those who menstruate: horoscope predictions adapt to cycle phases for personalized zodiac guidance.</p>
-              </div>
-            </div>
-
-            <div class="col-md-6 col-lg-3">
-              <div class="feature-card h-100">
-                <h5 class="mb-2">Private Astrology Data Storage</h5>
-                <p class="text-muted small mb-0">All personal horoscope and zodiac data is securely stored on dedicated storage — never provided to third parties or global cloud service providers.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-      <section class="py-5 bg-white">
+    <section class="py-5 bg-white">
         <div class="container text-center">
-          <h2 class="fw-bold mb-3">Privacy-first by design</h2>
-          <p class="lead text-muted mb-4">We keep your data secure and private. Your horoscope predictions and cycle data are securely stored on dedicated storage and are never provided to third parties or global cloud service providers.</p>
-          <div class="d-flex justify-content-center gap-3">
-            <a class="btn btn-primary cta-btn" href="#">Get Signa on the App Store</a>
-            <a class="btn btn-outline-secondary cta-btn" href="#faq">Read FAQ</a>
-          </div>
+            <h2 class="fw-bold mb-3">Your stars, your data — always private</h2>
+            <p class="lead text-muted mb-4">Signa stores everything on dedicated secure servers. Your chart, cycle, and
+                horoscope data are yours alone — never shared or sold.</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a class="btn btn-primary cta-btn" href="#">Get Signa on the App Store</a>
+                <a class="btn btn-outline-secondary cta-btn" href="#faq">Read FAQ</a>
+            </div>
         </div>
-      </section>
+    </section>
 
-      <section id="testimonials" class="py-5 bg-white">
+    <section id="testimonials" class="py-5 bg-white">
         <div class="container">
-          <div class="text-center mb-4">
-            <h4 class="fw-bold">Loved by early users</h4>
-            <p class="text-muted">Short, genuine quotes about how Signa helped plan better days.</p>
-          </div>
+            <div class="text-center mb-4">
+                <h4 class="fw-bold">Loved by early users</h4>
+                <p class="text-muted">Short, genuine quotes about how Signa helped plan better days.</p>
+            </div>
 
-          <div class="row g-4">
-            <div class="col-md-4">
-              <blockquote class="p-4 border rounded-3" style="background:#fff;">
-                <p class="mb-2">"Signa helped me pick the right days for meetings and deep work. My weeks feel calmer."</p>
-                <footer class="text-muted small">— Jane, designer</footer>
-              </blockquote>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <blockquote class="p-4 border rounded-3" style="background:#fff;">
+                        <p class="mb-2">"Signa helped me pick the right days for meetings and deep work. My weeks feel
+                            calmer."</p>
+                        <footer class="text-muted small">— Jane, designer</footer>
+                    </blockquote>
+                </div>
+                <div class="col-md-4">
+                    <blockquote class="p-4 border rounded-3" style="background:#fff;">
+                        <p class="mb-2">"The menstrual insights are surprisingly practical — I plan my workouts around
+                            them now."</p>
+                        <footer class="text-muted small">— Jennifer, student</footer>
+                    </blockquote>
+                </div>
+                <div class="col-md-4">
+                    <blockquote class="p-4 border rounded-3" style="background:#fff;">
+                        <p class="mb-2">"Clear, private, and easy to use. The forecasts are short and actionable."</p>
+                        <footer class="text-muted small">— Tom, freelancer</footer>
+                    </blockquote>
+                </div>
             </div>
-            <div class="col-md-4">
-              <blockquote class="p-4 border rounded-3" style="background:#fff;">
-                <p class="mb-2">"The menstrual insights are surprisingly practical — I plan my workouts around them now."</p>
-                <footer class="text-muted small">— Jennifer, student</footer>
-              </blockquote>
-            </div>
-            <div class="col-md-4">
-              <blockquote class="p-4 border rounded-3" style="background:#fff;">
-                <p class="mb-2">"Clear, private, and easy to use. The forecasts are short and actionable."</p>
-                <footer class="text-muted small">— Tom, freelancer</footer>
-              </blockquote>
-            </div>
-          </div>
         </div>
-      </section>
+    </section>
 
-      <section id="faq" class="py-5">
+    <section id="faq" class="py-5">
         <div class="container">
-          <h4 class="fw-bold text-center mb-4">Frequently Asked Questions About Horoscope & Zodiac Signs</h4>
-          <div class="accordion" id="faqAccordion">
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="faq-heading-1">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-1" aria-expanded="false" aria-controls="faq-1">How are horoscope predictions for zodiac signs generated?</button>
-              </h2>
-              <div id="faq-1" class="accordion-collapse collapse" aria-labelledby="faq-heading-1" data-bs-parent="#faqAccordion">
-                <div class="accordion-body">Signa combines planetary positions and astrology readings with calculated biorhythms based on your zodiac sign profile. The result is a short, practical horoscope forecast for today and tomorrow, personalized for each of the 12 zodiac signs: Aries, Taurus, Gemini, Cancer, Leo, Virgo, Libra, Scorpio, Sagittarius, Capricorn, Aquarius, and Pisces.</div>
-              </div>
-            </div>
+            <h4 class="fw-bold text-center mb-4">Frequently Asked Questions About Horoscope & Zodiac Signs</h4>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="faq-heading-1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#faq-1" aria-expanded="false" aria-controls="faq-1">How are horoscope
+                            predictions for zodiac signs generated?
+                        </button>
+                    </h2>
+                    <div id="faq-1" class="accordion-collapse collapse" aria-labelledby="faq-heading-1"
+                         data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">Signa combines planetary positions and astrology readings with
+                            calculated biorhythms based on your zodiac sign profile. The result is a short, practical
+                            horoscope forecast for today and tomorrow, personalized for each of the 12 zodiac signs:
+                            Aries, Taurus, Gemini, Cancer, Leo, Virgo, Libra, Scorpio, Sagittarius, Capricorn, Aquarius,
+                            and Pisces.
+                        </div>
+                    </div>
+                </div>
 
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="faq-heading-2">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-2" aria-expanded="false" aria-controls="faq-2">Is my horoscope and zodiac data private?</button>
-              </h2>
-              <div id="faq-2" class="accordion-collapse collapse" aria-labelledby="faq-heading-2" data-bs-parent="#faqAccordion">
-                <div class="accordion-body">Yes. All user data, including birth chart information and zodiac sign details, is securely stored on dedicated storage and is never provided to third parties or global cloud service providers. You have full control of your personal astrology settings.</div>
-              </div>
-            </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="faq-heading-2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#faq-2" aria-expanded="false" aria-controls="faq-2">Is my horoscope and
+                            zodiac data private?
+                        </button>
+                    </h2>
+                    <div id="faq-2" class="accordion-collapse collapse" aria-labelledby="faq-heading-2"
+                         data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">Yes. All user data, including birth chart information and zodiac
+                            sign details, is securely stored on dedicated storage and is never provided to third parties
+                            or global cloud service providers. You have full control of your personal astrology
+                            settings.
+                        </div>
+                    </div>
+                </div>
 
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="faq-heading-3">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-3" aria-expanded="false" aria-controls="faq-3">Does Signa work for all 12 zodiac signs?</button>
-              </h2>
-              <div id="faq-3" class="accordion-collapse collapse" aria-labelledby="faq-heading-3" data-bs-parent="#faqAccordion">
-                <div class="accordion-body">Absolutely. Signa provides personalized horoscope predictions for all 12 zodiac signs. Everyone receives accurate daily and tomorrow astrology forecasts and biorhythm insights tailored to their specific zodiac sign, whether you're an Aries, Leo, Scorpio, or any other sign.</div>
-              </div>
-            </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="faq-heading-3">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#faq-3" aria-expanded="false" aria-controls="faq-3">Does Signa work for
+                            all 12 zodiac signs?
+                        </button>
+                    </h2>
+                    <div id="faq-3" class="accordion-collapse collapse" aria-labelledby="faq-heading-3"
+                         data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">Absolutely. Signa provides personalized horoscope predictions for
+                            all 12 zodiac signs. Everyone receives accurate daily and tomorrow astrology forecasts and
+                            biorhythm insights tailored to their specific zodiac sign, whether you're an Aries, Leo,
+                            Scorpio, or any other sign.
+                        </div>
+                    </div>
+                </div>
 
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="faq-heading-4">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-4" aria-expanded="false" aria-controls="faq-4">Can men use Signa?</button>
-              </h2>
-              <div id="faq-4" class="accordion-collapse collapse" aria-labelledby="faq-heading-4" data-bs-parent="#faqAccordion">
-                <div class="accordion-body">Absolutely. Men receive the same daily and tomorrow horoscope predictions and biorhythm insights for their zodiac sign. Menstrual tracking is an optional feature for those who need it. All 12 zodiac signs are available for everyone.</div>
-              </div>
-            </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="faq-heading-4">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#faq-4" aria-expanded="false" aria-controls="faq-4">Can men use Signa?
+                        </button>
+                    </h2>
+                    <div id="faq-4" class="accordion-collapse collapse" aria-labelledby="faq-heading-4"
+                         data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">Absolutely. Men receive the same daily and tomorrow horoscope
+                            predictions and biorhythm insights for their zodiac sign. Menstrual tracking is an optional
+                            feature for those who need it. All 12 zodiac signs are available for everyone.
+                        </div>
+                    </div>
+                </div>
 
-          </div>
+            </div>
         </div>
-      </section>
-    </main>
+    </section>
+</main>
 
-    <footer class="py-4 bg-white">
-      <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+<footer class="py-4 bg-white">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
         <div class="d-flex align-items-center gap-3">
-          <img src="AppIcon.png" alt="Signa icon" width="44" height="44" style="border-radius:10px">
-          <div>
-            <div class="fw-bold">Signa</div>
-            <div class="text-muted small">Your sign. Your cycle. Your balance.</div>
-          </div>
+            <img src="AppIcon.png" alt="Signa icon" width="44" height="44" style="border-radius:10px">
+            <div>
+                <div class="fw-bold">Signa</div>
+                <div class="text-muted small">Your sign. Your cycle. Your balance.</div>
+            </div>
         </div>
 
-        <div class="text-muted small mt-3 mt-md-0">© <span id="year">2025</span> Petit Chat. All rights reserved. <a href="#privacy" class="ms-2">Privacy</a></div>
-      </div>
-    </footer>
+        <div class="text-muted small mt-3 mt-md-0">© <span id="year">2025</span> Petit Chat. All rights reserved. <a
+                href="#privacy" class="ms-2">Privacy</a></div>
+    </div>
+</footer>
 
-    <!-- Bootstrap JS Bundle (includes Popper) - minimal JS usage required for accordion, dropdowns -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-      // small helper to set year automatically
-      document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
-  </body>
+<!-- Bootstrap JS Bundle (includes Popper) - minimal JS usage required for accordion, dropdowns -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // small helper to set year automatically
+    document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
 </html>
