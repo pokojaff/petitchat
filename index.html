@@ -1,66 +1,482 @@
 <!DOCTYPE html>
-<html lang="cs">
+<html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Petit chat</title>
-    <meta name="author" content="Petit chat"/>
-    <meta name="copyright" content="Petit chat s.r.o."/>
-    <meta name="description" lang="cs" content="Petit chat"/>
-    <meta name="keywords" lang="cs" content=""/>
-    <meta name="description" lang="en" content=""/>
-    <meta name="robots" content="index, follow"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+    <title>Petit chat — Software Development Partner</title>
+    <meta name="description" content="Full-stack software development from architecture design to deployment. iOS apps, web applications, and backend solutions built right.">
+    <meta name="keywords" content="software development, iOS apps, web applications, backend solutions, Python, Swift, React, AI integration">
+    <meta name="author" content="Petit chat s.r.o.">
+    <meta name="copyright" content="Petit chat s.r.o.">
+    <meta name="robots" content="index, follow">
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
     <style>
+        :root {
+            --accent: #9b6cff;
+            --accent-hover: #8654e6;
+            --muted: #6c6f76;
+            --card-bg: rgba(255,255,255,0.75);
+        }
+        
         body {
+            font-family: Inter, system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(180deg, #faf8ff 0%, #fff 40%);
+            color: #111;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
-            margin: 0;
         }
-        .main-content {
-            flex: 1;
+        
+        .hero {
+            padding: 5rem 0 4rem;
+        }
+        
+        .logo-hero {
+            max-width: 300px;
+            height: auto;
+            margin-bottom: 2rem;
+        }
+        
+        .text-accent {
+            color: var(--accent);
+        }
+        
+        .feature-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            height: 100%;
+            box-shadow: 0 6px 20px rgba(16,24,40,0.06);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(155, 108, 255, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(16,24,40,0.1);
+        }
+        
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--accent), #6fd3c7);
+            border-radius: 12px;
             display: flex;
+            align-items: center;
             justify-content: center;
+            color: white;
+            font-size: 24px;
+            margin-bottom: 1.25rem;
+        }
+        
+        .process-step {
+            text-align: center;
+            flex: 0 1 160px;
+            display: flex;
+            flex-direction: column;
             align-items: center;
         }
-        .center-container {
-            text-align: center;
+        
+        .process-arrow {
+            font-size: 2rem;
+            color: var(--accent);
+            line-height: 1;
+            margin-top: 12px;
         }
-        img {
-            /* max-width: 100%; */
-            height: auto;
+        
+        .process-number {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--accent), #6fd3c7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin: 0 auto 1rem;
         }
+        
+        .why-number {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            background: transparent;
+        }
+        
+        @media (max-width: 767px) {
+            .process-arrow {
+                display: none;
+            }
+        }
+        
+        .tech-badge {
+            background: var(--card-bg);
+            border: 1px solid rgba(155, 108, 255, 0.15);
+            border-radius: 999px;
+            padding: 0.5rem 1.25rem;
+            display: inline-block;
+            margin: 0.5rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            backdrop-filter: blur(6px);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), #8654e6);
+            border: none;
+            border-radius: 999px;
+            padding: 0.75rem 1.75rem;
+            font-weight: 600;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #8654e6, #7543d0);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(155, 108, 255, 0.3);
+        }
+        
+        .section-title {
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
         footer {
-            background-color: #f8f9fa;
-            padding: 1rem 0;
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 1.5rem 0;
+            margin-top: auto;
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(248,249,250,0.8);
+            backdrop-filter: saturate(0.5);
+            -webkit-backdrop-filter: saturate(0.5);
+        }
+        
+        footer .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        footer .text-muted {
+            color: #333 !important;
+        }
+        
+        footer .text-accent {
+            color: #333 !important;
+            font-weight: 600;
+        }
+        
+        footer .text-accent:hover {
+            color: var(--accent) !important;
+        }
+        
+        .divider-accent {
+            height: 3px;
+            width: 60px;
+            background: linear-gradient(90deg, var(--accent), #6fd3c7);
+            margin: 0 auto 2rem;
+            border-radius: 2px;
+        }
+        
+        .key-points-section {
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+        
+        .key-points-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(232,232,237,0.5);
+            backdrop-filter: saturate(0.5);
+            -webkit-backdrop-filter: saturate(0.5);
+        }
+        
+        .key-points-section .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        @media (max-width: 767px) {
+            .hero {
+                padding: 3rem 0 2rem;
+            }
+            .logo-hero {
+                max-width: 220px;
+            }
         }
     </style>
 </head>
 
 <body>
-    <div class="main-content">
-        <div class="center-container">
-            <img src="logo.png" alt="Petit chat">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="text-center">
+                <img src="logo.png" alt="Petit chat" class="logo-hero">
+                <h1 class="display-5 fw-bold mb-3">
+                    Software done <span class="text-accent">right</span>.
+                </h1>
+                <p class="lead text-muted mb-4 mx-auto" style="max-width: 650px;">
+                    From architecture design to deployment. We build full-stack solutions that work — iOS apps, web platforms, and backend systems crafted with care.
+                </p>
+                <a href="#services" class="btn btn-primary btn-lg">
+                    <i class="bi bi-arrow-down-circle me-2"></i>Explore our work
+                </a>
+            </div>
         </div>
-    </div>
-    
-    <footer class="mt-auto">
+    </section>
+
+    <!-- Three Key Points -->
+    <section class="py-5 key-points-section">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon mx-auto">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+                        <h5 class="fw-bold mb-2">Reliable Software Partner</h5>
+                        <p class="text-muted mb-0">We really do software. No shortcuts, no excuses — just solid code that works.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon mx-auto">
+                            <i class="bi bi-person-gear"></i>
+                        </div>
+                        <h5 class="fw-bold mb-2">Individual Approach</h5>
+                        <p class="text-muted mb-0">Tailored for your satisfaction. Every project gets the attention it deserves.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon mx-auto">
+                            <i class="bi bi-check-circle"></i>
+                        </div>
+                        <h5 class="fw-bold mb-2">Guaranteed to Work</h5>
+                        <p class="text-muted mb-0">100% Done! We don't stop until your software is ready for production.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-5 bg-white">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">What we build</h2>
+                <p class="lead text-muted">Customer apps and B2B solutions from concept to launch.</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card">
+                        <h5 class="fw-bold mb-2">iOS Applications</h5>
+                        <p class="text-muted small mb-0">Native Swift apps designed for iPhone and iPad. From prototypes to App Store.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card">
+                        <h5 class="fw-bold mb-2">Web Applications</h5>
+                        <p class="text-muted small mb-0">Modern React frontends that are fast, responsive, and built to scale.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card">
+                        <h5 class="fw-bold mb-2">Backend Solutions</h5>
+                        <p class="text-muted small mb-0">Robust Python backends with Flask and Plone. APIs that power your product.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card">
+                        <h5 class="fw-bold mb-2">AI Integration</h5>
+                        <p class="text-muted small mb-0">Smart features powered by AI. From automation to intelligent insights.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Work With Us Section -->
+    <section class="py-5" style="background: rgba(232,232,237,0.5);">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h2 class="display-6 fw-bold mb-3">
+                        Why work <br>
+                        <span class="text-accent">with us?</span>
+                    </h2>
+                    <p class="lead text-muted">
+                        Because we care about getting it right — not just done.
+                    </p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="d-flex flex-column gap-4">
+                        <div class="d-flex align-items-start">
+                            <div class="flex-shrink-0 me-3">
+                                <div class="why-number">1</div>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold mb-2">We listen first</h5>
+                                <p class="text-muted mb-0">Every project starts with understanding your goals. No templates, no assumptions.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex align-items-start">
+                            <div class="flex-shrink-0 me-3">
+                                <div class="why-number">2</div>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold mb-2">We build to last</h5>
+                                <p class="text-muted mb-0">Clean code, solid architecture, proper testing. Your software won't break in six months.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex align-items-start">
+                            <div class="flex-shrink-0 me-3">
+                                <div class="why-number">3</div>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold mb-2">We stay involved</h5>
+                                <p class="text-muted mb-0">From launch to updates. We're here when you need us, even after deployment.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="py-5 bg-white">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">How we work</h2>
+                <p class="lead text-muted">Clear process. Consistent results.</p>
+            </div>
+            
+            <div class="d-flex flex-wrap justify-content-center align-items-start gap-3">
+                <div class="process-step">
+                    <div class="process-number">1</div>
+                    <h6 class="fw-bold mb-2">Discovery</h6>
+                    <p class="text-muted small">Understanding your needs and defining the scope.</p>
+                </div>
+                
+                <div class="process-arrow">
+                    <i class="bi bi-arrow-right"></i>
+                </div>
+                
+                <div class="process-step">
+                    <div class="process-number">2</div>
+                    <h6 class="fw-bold mb-2">Design</h6>
+                    <p class="text-muted small">Architecture and UI/UX that makes sense.</p>
+                </div>
+                
+                <div class="process-arrow">
+                    <i class="bi bi-arrow-right"></i>
+                </div>
+                
+                <div class="process-step">
+                    <div class="process-number">3</div>
+                    <h6 class="fw-bold mb-2">Development</h6>
+                    <p class="text-muted small">Building with clean code and best practices.</p>
+                </div>
+                
+                <div class="process-arrow">
+                    <i class="bi bi-arrow-right"></i>
+                </div>
+                
+                <div class="process-step">
+                    <div class="process-number">4</div>
+                    <h6 class="fw-bold mb-2">Testing</h6>
+                    <p class="text-muted small">Making sure everything works perfectly.</p>
+                </div>
+                
+                <div class="process-arrow">
+                    <i class="bi bi-arrow-right"></i>
+                </div>
+                
+                <div class="process-step">
+                    <div class="process-number">5</div>
+                    <h6 class="fw-bold mb-2">Deployment</h6>
+                    <p class="text-muted small">Live, monitored, and ready for users.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technologies Section -->
+    <section class="py-5" style="background: rgba(232,232,237,0.5);">
+        <div class="container">
+            <div class="text-center mb-4">
+                <h2 class="section-title">Technologies we use</h2>
+                <p class="text-muted mb-4">Modern stack. Proven tools.</p>
+                
+                <div class="mt-4">
+                    <span class="tech-badge"><i class="bi bi-code-slash me-2"></i>Python</span>
+                    <span class="tech-badge"><i class="bi bi-phone me-2"></i>Swift</span>
+                    <span class="tech-badge"><i class="bi bi-filetype-jsx me-2"></i>React</span>
+                    <span class="tech-badge"><i class="bi bi-lightning me-2"></i>Flask</span>
+                    <span class="tech-badge"><i class="bi bi-three-dots-vertical me-2"></i>Plone</span>
+                    <span class="tech-badge"><i class="bi bi-stars me-2"></i>AI</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-center text-md-start mb-2 mb-md-0">
                     <span class="text-muted">© 2025 Petit chat s.r.o.</span>
                 </div>
                 <div class="col-md-6 text-center text-md-end">
-                    <a href="support.html" class="text-decoration-none">Technical support</a>
+                    <a href="support.html" class="text-decoration-none text-accent">Technical support</a>
                 </div>
             </div>
         </div>
     </footer>
-    
+
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
