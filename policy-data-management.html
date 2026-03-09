@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Management & Security Policy - Petit chat</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; padding-top: 50px; }
+        .text-accent { color: #0d6efd; text-decoration: none; }
+        .text-accent:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+<div class="container mb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10 col-xl-8">
+            <h2 class="fw-bold mb-3">Data Management & Security Policy</h2>
+            <p class="text-muted">Last updated: March 2026</p>
+            <p class="text-muted">
+                This document outlines the technical frameworks and operational procedures used by 
+                <strong>Petit chat, s.r.o.</strong> to ensure the integrity, availability, and 
+                confidentiality of user data.
+            </p>
+
+            <h5 class="mt-4">1. Infrastructure & Data Residency</h5>
+            <p class="text-muted">
+                Our production environment is hosted on <strong>DigitalOcean</strong> infrastructure. 
+                To comply with GDPR and ensure low-latency access for European users, all health and 
+                personal data is stored within the <strong>Frankfurt (FRA1)</strong> data center region 
+                (Germany, EEA).
+            </p>
+            <ul class="text-muted">
+                <li><strong>Server Security:</strong> We utilize firewalled droplets and VPC (Virtual Private Cloud) to isolate database traffic from the public internet.</li>
+                <li><strong>Database Management:</strong> We employ managed database clusters with automated patching and encrypted storage volumes.</li>
+            </ul>
+
+            <h5 class="mt-4">2. Backup & Disaster Recovery</h5>
+            <p class="text-muted">
+                We recognize the critical nature of health data. Our backup strategy is designed for 
+                resilience:
+            </p>
+            <ul class="text-muted">
+                <li><strong>Frequency:</strong> Full system snapshots and database backups are performed once every 24 hours.</li>
+                <li><strong>Redundancy:</strong> Backups are stored on separate, geographically redundant storage volumes within the DigitalOcean infrastructure.</li>
+                <li><strong>Integrity:</strong> We regularly perform recovery drills to ensure that data can be restored effectively in the event of a platform-wide or application-level failure.</li>
+            </ul>
+
+            <h5 class="mt-4">3. Data Retention & Deletion Logic</h5>
+            <p class="text-muted">
+                We give users full control over their digital footprint. Our deletion process follows a 
+                two-tier approach:
+            </p>
+            <ul class="text-muted">
+                <li><strong>Standard Deletion:</strong> Upon account closure, data is placed in a "soft-delete" state for 30 days, allowing users to recover their history if the request was accidental.</li>
+                <li><strong>Immediate Liquidation:</strong> Users may opt for "Immediate Permanent Deletion." In this case, all health and biometric records are purged from active production databases within minutes, without the possibility of recovery.</li>
+                <li><strong>Backup Purging:</strong> Data in backups is cleared naturally as part of the standard 30-day rotation cycle.</li>
+            </ul>
+
+            <h5 class="mt-4">4. Access Control & Human Factors</h5>
+            <p class="text-muted">
+                We minimize human interaction with sensitive data through strict Role-Based Access Control (RBAC):
+            </p>
+            <ul class="text-muted">
+                <li><strong>Database Administrators:</strong> Direct access to the database is restricted to authorized personnel whose employment contracts include specific non-disclosure and sensitive data handling clauses.</li>
+                <li><strong>Assisted Support Access:</strong> Support staff cannot access user accounts by default. Access is only granted through a mutual verification process requiring the user's active assistance and explicit consent for a limited time window.</li>
+                <li><strong>Authentication:</strong> Multi-factor authentication (MFA) is mandatory for all administrative interfaces.</li>
+            </ul>
+
+            <h5 class="mt-4">5. Research & Anonymization</h5>
+            <p class="text-muted">
+                To improve health outcomes and system performance, we may use data for statistical research. 
+                Any data used for these purposes is subjected to a rigorous <strong>anonymization process</strong>. 
+                All Personal Identifiable Information (PII) is stripped, ensuring that records can never 
+                be linked back to an individual user, thus maintaining 100% privacy even during large-scale 
+                trend analysis.
+            </p>
+
+            <h5 class="mt-4">6. Security Audits</h5>
+            <p class="text-muted">
+                We perform regular internal security reviews of our Data Management Policy to adapt to 
+                new threats and ensure that our technical debt is managed in favor of user safety.
+            </p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
