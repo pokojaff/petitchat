@@ -73,7 +73,7 @@ class SiteFooter extends HTMLElement {
           margin-bottom: 0;
         }
         site-footer .footer-link:hover {
-          color: #495057;
+          color: #9b6cff;
         }
         site-footer .footer-link-accent {
           color: #333;
@@ -98,6 +98,22 @@ class SiteFooter extends HTMLElement {
             text-align: center;
           }
         }
+        site-footer .footer-divider {
+          border: none;
+          border-top: 1px solid #dee2e6;
+          margin: 1rem 0 0.75rem;
+        }
+        site-footer .footer-copyright {
+          color: #6c757d;
+          font-size: 0.8rem;
+          margin: 0;
+          line-height: 1.5;
+        }
+        @media (max-width: 767.98px) {
+          site-footer .footer-copyright {
+            text-align: center;
+          }
+        }
       </style>
       <footer>
         <div class="footer-container">
@@ -118,6 +134,8 @@ class SiteFooter extends HTMLElement {
               <a href="${base}support.html" class="footer-link-accent">Technical support</a>
             </div>
           </div>
+          <hr class="footer-divider">
+          <p class="footer-copyright">© Petit chat, 2026. All rights reserved.</p>
         </div>
       </footer>
     `;
