@@ -122,7 +122,7 @@ class SiteFooter extends HTMLElement {
               <p class="footer-text fw-semibold">Petit chat s.r.o.</p>
               <p class="footer-text">VAT CZ22013962</p>
               <p class="footer-text">DUNS 764449629</p>
-              <p class="footer-text">Ke Dvoru 123, Praha 6, Czech Republic</p>
+              <p class="footer-text">Ke Dvoru 17/23, Praha 6, Czech Republic</p>
             </div>
             <div class="footer-center">
               <a href="${base}policy-privacy.html" class="footer-link">Privacy Policy</a>
