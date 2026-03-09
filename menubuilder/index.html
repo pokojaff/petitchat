@@ -1,0 +1,818 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MenuBuilder — Smart Meal Planning for Active Lives</title>
+    <meta name="description" content="MenuBuilder is a meal planning platform that correlates weekly nutrition, CGM glucose data, and Garmin activity metrics into one coherent metabolic dashboard.">
+    <meta name="keywords" content="meal planning, diabetes, glucose tracking, CGM, LibreLinkUp, FreeStyle Libre, Garmin, nutrition, glycemia, metabolic health">
+    <meta name="author" content="Petit Chat s.r.o.">
+    <link rel="canonical" href="https://menubuilder.petitchat.cz/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://menubuilder.petitchat.cz/">
+    <meta property="og:title" content="MenuBuilder — Smart Meal Planning for Active Lives">
+    <meta property="og:description" content="Correlate meal plans, CGM glucose data, and Garmin activity metrics in one weekly view. Built for people with diabetes and active lifestyles.">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --accent:       #2da06b;
+            --accent2:      #1a8fc4;
+            --accent-dark:  #1c7a50;
+            --accent2-dark: #136fa0;
+            --muted:        #6c6f76;
+            --card-bg:      rgba(255,255,255,0.72);
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Helvetica Neue', Arial;
+            background: linear-gradient(180deg, #f2fcf7 0%, #ffffff 36%);
+            color: #111;
+        }
+
+        /* ── Layout ── */
+        .hero { padding: 5.5rem 0 4.5rem; }
+        @media (max-width: 767px) { .hero { padding: 3.5rem 0 3rem; } }
+
+        /* ── Colours ── */
+        .text-green  { color: var(--accent-dark); }
+        .text-blue   { color: var(--accent2-dark); }
+        .bg-subtle   { background: rgba(230,240,234,0.55); }
+
+        /* ── Badges / section labels ── */
+        .section-badge {
+            display: inline-block;
+            background: rgba(45,160,107,0.1);
+            color: var(--accent-dark);
+            border-radius: 999px;
+            padding: 0.3rem 0.9rem;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
+        }
+        .section-badge.blue {
+            background: rgba(26,143,196,0.1);
+            color: var(--accent2-dark);
+        }
+
+        /* ── Buttons ── */
+        .cta-btn {
+            border-radius: 999px;
+            padding: 0.72rem 1.5rem;
+            font-weight: 600;
+        }
+        .btn-primary {
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            border: none;
+        }
+        .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+            background: linear-gradient(90deg, var(--accent-dark), var(--accent2-dark));
+            border: none;
+            box-shadow: 0 0 0 0.25rem rgba(45,160,107,0.28);
+        }
+
+        /* ── Cards ── */
+        .feature-card {
+            background: var(--card-bg);
+            border-radius: 14px;
+            padding: 1.6rem;
+            box-shadow: 0 5px 18px rgba(16,24,40,0.07);
+            backdrop-filter: blur(6px);
+            height: 100%;
+        }
+
+        /* ── Icon boxes ── */
+        .icon-box {
+            width: 46px; height: 46px;
+            border-radius: 11px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+        .icon-box-green  { background: linear-gradient(135deg,#2da06b,#1da060); color:#fff; }
+        .icon-box-red    { background: linear-gradient(135deg,#e85d5d,#c23b3b); color:#fff; }
+        .icon-box-blue   { background: linear-gradient(135deg,#1a8fc4,#0d6da1); color:#fff; }
+        .icon-box-orange { background: linear-gradient(135deg,#f59e0b,#d97706); color:#fff; }
+
+        /* ── App icon (nav + footer) ── */
+        .app-icon {
+            width: 44px; height: 44px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        /* ── Photos ── */
+        .hero-photo {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 22px 60px rgba(16,24,40,0.18), 0 8px 20px rgba(16,24,40,0.1);
+            object-fit: cover;
+            max-height: 430px;
+        }
+        .visual-photo {
+            width: 100%; height: 220px;
+            object-fit: cover;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(16,24,40,0.11);
+            display: block;
+        }
+        .garmin-side-photo {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(16,24,40,0.13);
+            object-fit: cover;
+        }
+
+        /* ── Garmin table ── */
+        .garmin-table th { color: var(--accent-dark); font-size: 0.82rem; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; }
+        .garmin-table td { font-size: 0.9rem; vertical-align: top; padding: 0.9rem 0.75rem; }
+        .garmin-table tr:hover td { background: rgba(45,160,107,0.04); transition: background 0.15s; }
+        .garmin-table td strong { display: block; margin-bottom: 0.15rem; }
+
+        /* ── Alert ── */
+        .alert-garmin {
+            background: rgba(26,143,196,0.07);
+            border-left: 4px solid var(--accent2);
+            border-radius: 8px;
+            padding: 0.9rem 1.1rem;
+        }
+
+        /* ── Accordion ── */
+        .accordion-button:not(.collapsed) {
+            background-color: rgba(45,160,107,0.08);
+            color: var(--accent-dark);
+        }
+        .accordion-button:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 0.25rem rgba(45,160,107,0.22);
+        }
+
+        /* ── Data streams (problem section) ── */
+        .stream-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 1rem 1.2rem;
+            box-shadow: 0 4px 14px rgba(16,24,40,0.07);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .stream-card + .stream-card { margin-top: 0.9rem; }
+
+        /* ── Privacy cards ── */
+        .privacy-card {
+            background: #fff;
+            border-radius: 14px;
+            padding: 1.6rem;
+            box-shadow: 0 4px 16px rgba(16,24,40,0.06);
+        }
+
+        footer { font-size: 0.9rem; color: var(--muted); }
+    </style>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "MenuBuilder",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "Web",
+        "description": "MenuBuilder is a meal planning platform correlating weekly nutrition, CGM glucose data, and Garmin activity metrics into one metabolic dashboard.",
+        "url": "https://menubuilder.petitchat.cz/",
+        "author": { "@type": "Organization", "name": "Petit Chat s.r.o." }
+    }
+    </script>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════════════════════════════ -->
+<nav class="navbar navbar-expand-lg navbar-light bg-transparent py-3">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+            <div class="app-icon"><i class="bi bi-calendar-heart-fill"></i></div>
+            <div class="d-flex align-items-baseline gap-2">
+                <span class="fw-bold fs-3">MenuBuilder</span>
+                <span class="fw-lighter fs-6 text-muted d-none d-md-inline">by Petit Chat</span>
+            </div>
+        </a>
+        <div class="d-flex gap-2 align-items-center">
+            <a class="btn btn-outline-secondary btn-sm cta-btn" href="#garmin">Garmin integration</a>
+            <a class="btn btn-primary btn-sm cta-btn" href="https://menubuilder.petitchat.cz" target="_blank">
+                <i class="bi bi-box-arrow-up-right me-1"></i>Open App
+            </a>
+        </div>
+    </div>
+</nav>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════════════════════ -->
+<header class="hero">
+    <div class="container">
+        <div class="row align-items-center gy-5">
+            <!-- Text -->
+            <div class="col-lg-6">
+                <span class="section-badge"><i class="bi bi-activity me-1"></i>Metabolic Health Platform</span>
+                <h1 class="display-5 fw-bold mb-3 lh-sm">
+                    <span class="text-green">Smart</span> Meal Planning<br>
+                    for <span class="text-green">Active</span> Lives
+                </h1>
+                <p class="lead text-muted mb-4">
+                    MenuBuilder helps people with diabetes and active lifestyles understand the relationship
+                    between what they eat, how they move, and how their body responds — all in one weekly view.
+                </p>
+                <div class="d-flex flex-wrap gap-3 mb-4">
+                    <a class="btn btn-primary cta-btn d-inline-flex align-items-center"
+                       href="https://menubuilder.petitchat.cz" target="_blank">
+                        <i class="bi bi-box-arrow-up-right me-2"></i>Open MenuBuilder
+                    </a>
+                    <a class="btn btn-outline-secondary cta-btn" href="#how-it-works">How it works</a>
+                </div>
+                <ul class="list-unstyled text-muted mb-0">
+                    <li class="mb-2">
+                        <i class="bi bi-check2-circle text-success me-2"></i>
+                        Plan weekly meals and auto-generate a categorized shopping list
+                    </li>
+                    <li class="mb-2">
+                        <i class="bi bi-check2-circle text-success me-2"></i>
+                        Visualize CGM glucose curves alongside carbohydrate intake per meal
+                    </li>
+                    <li class="mb-0">
+                        <i class="bi bi-check2-circle text-success me-2"></i>
+                        Overlay Garmin activity data to reveal how exercise shapes glycemic response
+                    </li>
+                </ul>
+            </div>
+            <!-- Hero photo -->
+            <div class="col-lg-6">
+                <img src="https://images.unsplash.com/photo-1571188654248-7a89213915f7?auto=format&fit=crop&w=780&q=82"
+                     alt="Cyclist with GPS smartwatch tracking activity and health metrics"
+                     class="hero-photo">
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     VISUAL STRIP — 3 lifestyle photos
+══════════════════════════════════════════════════════════════ -->
+<section class="py-5 bg-subtle">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=640&q=82"
+                     alt="Healthy meal preparation with fresh ingredients and nutritional balance"
+                     class="visual-photo">
+                <p class="text-center text-muted small mt-2 mb-0">
+                    <i class="bi bi-journal-richtext me-1 text-green"></i>
+                    Plan meals with full nutritional data
+                </p>
+            </div>
+            <div class="col-md-4">
+                <img src="https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=640&q=82"
+                     alt="Runner outdoors with GPS smartwatch monitoring heart rate and activity"
+                     class="visual-photo">
+                <p class="text-center text-muted small mt-2 mb-0">
+                    <i class="bi bi-smartwatch me-1 text-blue"></i>
+                    Correlate exercise with glucose response
+                </p>
+            </div>
+            <div class="col-md-4">
+                <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=640&q=82"
+                     alt="Continuous glucose monitoring — wearable CGM sensor technology"
+                     class="visual-photo">
+                <p class="text-center text-muted small mt-2 mb-0">
+                    <i class="bi bi-droplet-half me-1" style="color:#e85d5d"></i>
+                    CGM data via FreeStyle Libre / LibreLinkUp
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     PROBLEM STATEMENT
+══════════════════════════════════════════════════════════════ -->
+<section class="py-5 bg-white">
+    <div class="container">
+        <div class="row align-items-center gy-5">
+            <div class="col-lg-7">
+                <span class="section-badge">The Challenge</span>
+                <h2 class="fw-bold mb-3">Three data streams.<br>One coherent picture.</h2>
+                <p class="lead text-muted mb-3">
+                    Managing blood glucose or optimizing athletic performance requires understanding three things
+                    simultaneously: what you ate, how you moved, and how your body responded.
+                </p>
+                <p class="text-muted mb-0">
+                    Today, that information is scattered across a meal planning app, a CGM companion app,
+                    and a fitness tracker. MenuBuilder brings it together into a single weekly view — correlating
+                    meal nutrition, real-time CGM glucose curves, and Garmin activity data on a shared timeline.
+                </p>
+            </div>
+            <div class="col-lg-5">
+                <div class="stream-card">
+                    <div class="icon-box icon-box-green"><i class="bi bi-journal-richtext"></i></div>
+                    <div>
+                        <div class="fw-semibold">Meal planner</div>
+                        <div class="text-muted small">Recipes, kcal, carbs, shopping list</div>
+                    </div>
+                </div>
+                <div class="stream-card">
+                    <div class="icon-box icon-box-red"><i class="bi bi-droplet-half"></i></div>
+                    <div>
+                        <div class="fw-semibold">CGM glucose data</div>
+                        <div class="text-muted small">FreeStyle Libre via LibreLinkUp API</div>
+                    </div>
+                </div>
+                <div class="stream-card">
+                    <div class="icon-box icon-box-blue"><i class="bi bi-smartwatch"></i></div>
+                    <div>
+                        <div class="fw-semibold">Garmin activity metrics</div>
+                        <div class="text-muted small">Calories, heart rate, HRV, VO₂ max, sleep</div>
+                    </div>
+                </div>
+                <div class="text-center mt-3">
+                    <div class="d-inline-flex align-items-center gap-2 px-3 py-2 rounded-3"
+                         style="background:linear-gradient(90deg,rgba(45,160,107,0.1),rgba(26,143,196,0.1));">
+                        <i class="bi bi-arrow-down-circle-fill" style="color:var(--accent)"></i>
+                        <span class="fw-semibold text-green small">One unified weekly dashboard</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     KEY FEATURES
+══════════════════════════════════════════════════════════════ -->
+<section id="how-it-works" class="py-5 bg-subtle">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="section-badge">Platform features</span>
+            <h2 class="fw-bold mb-2">Built around your metabolic health</h2>
+            <p class="lead text-muted">
+                Structured meal planning, real-time glucose monitoring, and activity correlation — working together.
+            </p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="feature-card">
+                    <div class="icon-box icon-box-green mb-3"><i class="bi bi-calendar-week-fill"></i></div>
+                    <h5 class="mb-2">Weekly Meal Planner</h5>
+                    <p class="text-muted small mb-0">
+                        Plan all meals for the week from a shared recipe and ingredient database.
+                        Track nutrition per meal — kcal, carbohydrates, protein, fat, fiber — and
+                        auto-generate a categorized shopping list ready for the store.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="feature-card">
+                    <div class="icon-box icon-box-red mb-3"><i class="bi bi-graph-up-arrow"></i></div>
+                    <h5 class="mb-2">CGM Glucose Dashboard</h5>
+                    <p class="text-muted small mb-0">
+                        Connect FreeStyle Libre via the LibreLinkUp API. See your weekly glucose curve,
+                        identify post-meal spikes, and correlate them with the carbohydrate content of
+                        each planned meal. Automated hourly background sync keeps data continuously current.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="feature-card">
+                    <div class="icon-box icon-box-blue mb-3"><i class="bi bi-smartwatch"></i></div>
+                    <h5 class="mb-2">
+                        Garmin Activity Overlay
+                        <span class="badge bg-secondary ms-1" style="font-size:0.58rem;vertical-align:middle;">In&nbsp;dev</span>
+                    </h5>
+                    <p class="text-muted small mb-0">
+                        Overlay calorie expenditure, activity type and duration, resting heart rate,
+                        HRV-based body stress, weight, and VO₂ max directly on the glucose and nutrition
+                        timeline — making the exercise–glucose connection visible at a glance.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="feature-card">
+                    <div class="icon-box icon-box-orange mb-3"><i class="bi bi-cup-straw"></i></div>
+                    <h5 class="mb-2">Unplanned Meals &amp; Snacks</h5>
+                    <p class="text-muted small mb-0">
+                        Log spontaneous snacks using a personal snack database or the shared ingredient
+                        database. kcal and carbohydrate values are calculated automatically. Every logged
+                        item is reflected in the weekly carbohydrate chart alongside planned meals.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     GARMIN INTEGRATION — key section for Developer review
+══════════════════════════════════════════════════════════════ -->
+<section id="garmin" class="py-5 bg-white">
+    <div class="container">
+        <div class="row align-items-start gy-5">
+
+            <!-- Left: intro text + photo -->
+            <div class="col-lg-4">
+                <span class="section-badge blue"><i class="bi bi-smartwatch me-1"></i>Garmin Integration</span>
+                <h2 class="fw-bold mb-3">Why Garmin data matters for metabolic health</h2>
+                <p class="text-muted mb-3">
+                    Glucose response is not driven by food alone. Physical activity, cardiovascular stress,
+                    and recovery state all significantly influence blood sugar levels — yet this context
+                    is absent from most CGM dashboards.
+                </p>
+                <p class="text-muted mb-4">
+                    A 45-minute cycling session at 2&nbsp;p.m. can meaningfully lower glucose two hours
+                    later. Without knowing the activity happened, that drop looks unexplained. With
+                    Garmin data, the pattern becomes actionable.
+                </p>
+                <img src="https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?auto=format&fit=crop&w=620&q=82"
+                     alt="Person wearing Garmin smartwatch during physical activity, monitoring health metrics"
+                     class="garmin-side-photo">
+            </div>
+
+            <!-- Right: data table + security note -->
+            <div class="col-lg-8">
+                <h5 class="fw-semibold mb-3 text-muted">Requested data points &amp; purpose</h5>
+                <table class="table table-borderless garmin-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 36%">Data point</th>
+                            <th>Why MenuBuilder uses it</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <i class="bi bi-lightning-charge-fill text-warning me-2"></i>
+                                <strong>Activity summaries</strong>
+                                <span class="text-muted">type, start time, duration, calories burned</span>
+                            </td>
+                            <td class="text-muted">
+                                Displayed as event markers on the glucose&nbsp;+ nutrition timeline,
+                                enabling direct visual correlation between exercise sessions and
+                                glycemic response. Core feature of the Garmin integration.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <i class="bi bi-heart-pulse-fill text-danger me-2"></i>
+                                <strong>Resting heart rate</strong>
+                            </td>
+                            <td class="text-muted">
+                                Tracks cardiovascular fitness trends over time alongside dietary
+                                changes and activity load — a reliable indicator of improving
+                                metabolic health.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <i class="bi bi-battery-half me-2 text-blue"></i>
+                                <strong>HRV / Body Battery</strong>
+                            </td>
+                            <td class="text-muted">
+                                Physiological stress (derived from HRV) raises cortisol, which in turn
+                                raises blood glucose. HRV provides an objective explanatory layer for
+                                glucose variability not accounted for by food or exercise alone.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <i class="bi bi-person-fill me-2 text-green"></i>
+                                <strong>Body weight</strong>
+                            </td>
+                            <td class="text-muted">
+                                Correlates meal plans and activity load with weight trends over time,
+                                supporting weight-management goals alongside glycemic control.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <i class="bi bi-wind me-2 text-blue"></i>
+                                <strong>VO₂ max</strong>
+                            </td>
+                            <td class="text-muted">
+                                Fitness level indicator contextualizing activity intensity relative to
+                                the user's aerobic capacity — relevant for personalized exercise
+                                guidance and progress tracking.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <i class="bi bi-moon-stars-fill text-secondary me-2"></i>
+                                <strong>Sleep duration &amp; quality</strong>
+                            </td>
+                            <td class="text-muted">
+                                Sleep deprivation measurably impairs insulin sensitivity, causing
+                                elevated fasting glucose. Sleep data adds a meaningful explanatory
+                                layer when morning glucose is unexpectedly high without a dietary cause.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="alert-garmin mt-3">
+                    <i class="bi bi-shield-check me-2 text-blue"></i>
+                    <strong>Authorization &amp; data control:</strong>
+                    All Garmin data is fetched exclusively via Garmin's OAuth&nbsp;2.0 flow, with explicit
+                    user consent. Users can disconnect their Garmin account at any time from their profile
+                    settings, which immediately purges the cached data from our servers. MenuBuilder does
+                    not request GPS routes, contacts, payment data, or any information unrelated to
+                    metabolic and physical health.
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     PRIVACY
+══════════════════════════════════════════════════════════════ -->
+<section class="py-5 bg-subtle">
+    <div class="container text-center">
+        <span class="section-badge"><i class="bi bi-shield-lock me-1"></i>Privacy &amp; Security</span>
+        <h2 class="fw-bold mb-3">Your data is yours. Always.</h2>
+        <p class="lead text-muted mb-5 mx-auto" style="max-width:640px;">
+            MenuBuilder stores meal plans, glucose readings, and activity data exclusively in association
+            with the authenticated user's account. Data is never sold, shared with advertisers, or used
+            to build profiles outside the platform.
+        </p>
+        <div class="row g-4 text-start justify-content-center">
+            <div class="col-md-4">
+                <div class="privacy-card">
+                    <i class="bi bi-lock-fill fs-3 mb-3 d-block text-green"></i>
+                    <h6 class="fw-bold">Encrypted credentials</h6>
+                    <p class="text-muted small mb-0">
+                        LibreLinkUp passwords and OAuth tokens are stored encrypted using
+                        Fernet AES-128. Plaintext credentials never touch the database.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="privacy-card">
+                    <i class="bi bi-person-lock fs-3 mb-3 d-block text-blue"></i>
+                    <h6 class="fw-bold">User-controlled connections</h6>
+                    <p class="text-muted small mb-0">
+                        Connections to LibreLinkUp and Garmin are configured individually by each user
+                        and can be revoked at any time from profile settings, with immediate data deletion.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="privacy-card">
+                    <i class="bi bi-database-lock fs-3 mb-3 d-block" style="color:#f59e0b"></i>
+                    <h6 class="fw-bold">Isolated data storage</h6>
+                    <p class="text-muted small mb-0">
+                        All data is stored in a PostgreSQL database accessible only to the authenticated
+                        account owner. Health data is never accessible across accounts.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     FAQ
+══════════════════════════════════════════════════════════════ -->
+<section id="faq" class="py-5 bg-white">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h4 class="fw-bold">Frequently asked questions</h4>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-9">
+                <div class="accordion" id="faqAccordion">
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#faq-1">
+                                Why does MenuBuilder need access to Garmin data?
+                            </button>
+                        </h2>
+                        <div id="faq-1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted">
+                                Glucose regulation is significantly influenced by physical activity. Without knowing
+                                when a user exercised, how intensely, and how many calories they burned, it is
+                                impossible to interpret glucose variability in context. Garmin data allows MenuBuilder
+                                to show users the full metabolic picture — food, movement, and glucose response on
+                                a single timeline.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#faq-2">
+                                Which specific Garmin data fields does MenuBuilder access?
+                            </button>
+                        </h2>
+                        <div id="faq-2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted">
+                                Activity summaries (type, start time, duration, calories burned), daily resting
+                                heart rate, HRV / Body Battery score, body weight, VO₂ max, and sleep duration
+                                and quality score. MenuBuilder does <strong>not</strong> request GPS routes,
+                                contacts, payment data, or any data unrelated to metabolic and physical health.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#faq-3">
+                                How is Garmin data stored and protected?
+                            </button>
+                        </h2>
+                        <div id="faq-3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted">
+                                Data is stored in a PostgreSQL database hosted on PythonAnywhere, accessible only
+                                to the authenticated account owner. All connections are encrypted in transit via
+                                HTTPS/TLS. OAuth tokens are stored encrypted using Fernet AES-128 — the same
+                                standard applied to LibreLinkUp credentials.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#faq-4">
+                                Can users disconnect their Garmin account?
+                            </button>
+                        </h2>
+                        <div id="faq-4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted">
+                                Yes. Users can disconnect Garmin integration at any time from their profile settings.
+                                Upon disconnection, all cached Garmin data for that user is immediately and
+                                permanently deleted from the database. No Garmin data is retained after the user
+                                revokes access.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#faq-5">
+                                Who is MenuBuilder designed for?
+                            </button>
+                        </h2>
+                        <div id="faq-5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted">
+                                Primarily for people with type 1 and type 2 diabetes who use a FreeStyle Libre
+                                CGM sensor and want to understand how their meals and physical activity affect
+                                glucose levels. The Garmin integration is especially valuable for this group, as
+                                exercise-driven glucose variability is a central daily management challenge. The
+                                meal planning and shopping list features are useful for anyone, regardless of
+                                diabetes status.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#faq-6">
+                                Is MenuBuilder a medical device?
+                            </button>
+                        </h2>
+                        <div id="faq-6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted">
+                                No. MenuBuilder is a personal health data visualization and meal planning tool.
+                                It does not provide medical advice, diagnoses, or treatment recommendations.
+                                Users are encouraged to consult their healthcare provider for clinical decisions
+                                regarding diabetes management.
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     PRIVACY POLICY (full text)
+══════════════════════════════════════════════════════════════ -->
+<section id="privacy-policy" class="py-5 bg-subtle">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-9 col-xl-8">
+                <h2 class="fw-bold mb-2">MenuBuilder Privacy Policy</h2>
+                <p class="text-muted small mb-4">Last updated: February 2026</p>
+                <p class="text-muted">
+                    MenuBuilder is designed as a personal health and nutrition tool. All user data is stored
+                    on secure servers and is never sold, shared with advertisers, or used for any purpose
+                    other than providing the service to the authenticated user.
+                </p>
+
+                <h5 class="fw-semibold mt-4">Information We Store</h5>
+                <ul class="text-muted">
+                    <li><strong>Account data:</strong> Email address and hashed password.</li>
+                    <li><strong>Meal plans and recipes:</strong> Your planned meals, recipe collections, and shopping lists.</li>
+                    <li><strong>Glucose readings:</strong> CGM data fetched from FreeStyle Libre via LibreLinkUp (retained for up to 365 days).</li>
+                    <li><strong>Activity data:</strong> Garmin activity summaries, heart rate, body weight, HRV, VO₂ max, and sleep data — fetched via the Garmin Health API with explicit user consent.</li>
+                    <li><strong>Third-party credentials:</strong> LibreLinkUp passwords and Garmin OAuth tokens, stored encrypted using Fernet AES-128. Plaintext credentials are never stored.</li>
+                </ul>
+
+                <h5 class="fw-semibold mt-4">How Your Data Is Used</h5>
+                <p class="text-muted">
+                    Data is used exclusively to provide in-app features: generating weekly meal and nutrition
+                    overviews, displaying CGM glucose curves, and visualizing Garmin activity data on the shared
+                    health timeline. No data is processed for advertising or profiling purposes.
+                </p>
+
+                <h5 class="fw-semibold mt-4">Data Sharing</h5>
+                <p class="text-muted">
+                    We do not transmit, sell, or share personal information with third parties.
+                    MenuBuilder operates without third-party analytics SDKs or advertising networks.
+                </p>
+
+                <h5 class="fw-semibold mt-4">Data Retention &amp; Control</h5>
+                <p class="text-muted">
+                    Users may delete their account at any time, which permanently removes all associated data.
+                    Glucose readings and food logs are automatically purged after 365 days. Users may disconnect
+                    third-party services (LibreLinkUp, Garmin) individually at any time; disconnection triggers
+                    immediate deletion of the corresponding cached data.
+                </p>
+
+                <h5 class="fw-semibold mt-4">Children's Privacy</h5>
+                <p class="text-muted">
+                    MenuBuilder is intended for users 16 years of age or older and is not directed at children.
+                </p>
+
+                <h5 class="fw-semibold mt-4">Contact</h5>
+                <p class="text-muted mb-0">
+                    Questions about privacy? Contact us at
+                    <a href="mailto:support@petitchat.cz" class="text-green fw-medium">support@petitchat.cz</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════════════════════ -->
+<footer class="py-4 bg-white border-top">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+        <div class="d-flex align-items-center gap-3">
+            <div class="app-icon"><i class="bi bi-calendar-heart-fill"></i></div>
+            <div>
+                <div class="fw-bold">MenuBuilder</div>
+                <div class="text-muted small">Smart Meal Planning for Active Lives</div>
+            </div>
+        </div>
+        <div class="text-muted small text-center">
+            © <span id="year">2026</span> Petit Chat s.r.o. All rights reserved.
+            &nbsp;·&nbsp;
+            <a href="#privacy-policy" class="text-green text-decoration-none">Privacy Policy</a>
+            &nbsp;·&nbsp;
+            <a href="https://menubuilder.petitchat.cz" class="text-green text-decoration-none" target="_blank">
+                menubuilder.petitchat.cz
+            </a>
+        </div>
+    </div>
+</footer>
+
+
+<!-- Bootstrap JS Bundle (Popper included) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
