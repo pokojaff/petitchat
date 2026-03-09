@@ -100,7 +100,7 @@ class SiteFooter extends HTMLElement {
         }
         site-footer .footer-divider {
           border: none;
-          border-top: 1px solid #dee2e6;
+          border-top: 1px solid #6c757d;
           margin: 1rem 0 0.75rem;
         }
         site-footer .footer-copyright {
