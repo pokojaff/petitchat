@@ -9,9 +9,12 @@
         html, body { 
             margin: 0; 
             height: 100%; 
-            overflow: hidden; 
+            overflow: hidden;
             display: flex;
             flex-direction: column;
+        }
+        site-footer {
+            flex-shrink: 0;
         }
         .logo-header {
             text-align: center;
@@ -47,6 +50,9 @@
                 marginheight="0" marginwidth="0" title="Contact support">
         </iframe>
     </div>
+
+    <script src="components/site-footer.js"></script>
+    <site-footer></site-footer>
 </body>
 </html>
 
