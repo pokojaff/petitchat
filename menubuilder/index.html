@@ -213,6 +213,7 @@
         </a>
         <div class="d-flex gap-2 align-items-center">
             <a class="btn btn-outline-secondary btn-sm cta-btn" href="#garmin">Garmin integration</a>
+            <a class="btn btn-outline-secondary btn-sm cta-btn" href="#privacy-policy">Privacy Policy</a>
             <a class="btn btn-primary btn-sm cta-btn" href="https://menubuilder.petitchat.cz" target="_blank">
                 <i class="bi bi-box-arrow-up-right me-1"></i>Open App
             </a>
@@ -731,52 +732,162 @@
         <div class="row justify-content-center">
             <div class="col-lg-9 col-xl-8">
                 <h2 class="fw-bold mb-2">MenuBuilder Privacy Policy</h2>
-                <p class="text-muted small mb-4">Last updated: February 2026</p>
+                <p class="text-muted small mb-4">Last updated: March 2026</p>
+
+                <!-- 1. Introduction & Data Controller -->
+                <h5 class="fw-semibold mt-4">1. Introduction &amp; Data Controller</h5>
                 <p class="text-muted">
-                    MenuBuilder is designed as a personal health and nutrition tool. All user data is stored
-                    on secure servers and is never sold, shared with advertisers, or used for any purpose
-                    other than providing the service to the authenticated user.
+                    MenuBuilder is a personal health, nutrition, and activity visualization platform operated by
+                    <strong>Petit Chat s.r.o.</strong>, a company registered in the Czech Republic (the "Data Controller").
+                    This Privacy Policy describes how we collect, use, store, and protect personal data when you use
+                    MenuBuilder. It applies uniformly to all health, fitness, and metabolic data integrations —
+                    whether from continuous glucose monitoring (CGM) devices, fitness trackers, smartwatches,
+                    health platforms, or any other connected data provider, present or future.
+                </p>
+                <p class="text-muted">
+                    We process personal data in accordance with the General Data Protection Regulation (EU) 2016/679
+                    ("GDPR") and applicable Czech data protection legislation. By creating an account and connecting
+                    third-party services, you acknowledge and agree to the practices described in this policy.
                 </p>
 
-                <h5 class="fw-semibold mt-4">Information We Store</h5>
+                <!-- 2. Legal Basis for Processing -->
+                <h5 class="fw-semibold mt-4">2. Legal Basis for Processing</h5>
+                <p class="text-muted mb-2">We process your personal data based on the following legal grounds:</p>
                 <ul class="text-muted">
-                    <li><strong>Account data:</strong> Email address and hashed password.</li>
-                    <li><strong>Meal plans and recipes:</strong> Your planned meals, recipe collections, and shopping lists.</li>
-                    <li><strong>Glucose readings:</strong> CGM data fetched from FreeStyle Libre via LibreLinkUp (retained for up to 365 days).</li>
-                    <li><strong>Activity data:</strong> Garmin activity summaries, heart rate, body weight, HRV, VO₂ max, and sleep data — fetched via the Garmin Health API with explicit user consent.</li>
-                    <li><strong>Third-party credentials:</strong> LibreLinkUp passwords and Garmin OAuth tokens, stored encrypted using Fernet AES-128. Plaintext credentials are never stored.</li>
+                    <li><strong>Consent (Art. 6(1)(a) &amp; Art. 9(2)(a) GDPR):</strong> Health and activity data from connected third-party providers (CGM glucose readings, activity metrics, heart rate, HRV, sleep data, body weight, VO₂ max, and similar physiological data) are processed only after you explicitly authorize the connection. You may withdraw consent at any time.</li>
+                    <li><strong>Performance of a contract (Art. 6(1)(b) GDPR):</strong> Account data, meal plans, recipes, and shopping lists are processed as necessary to provide the core MenuBuilder service.</li>
+                    <li><strong>Legitimate interest (Art. 6(1)(f) GDPR):</strong> Fully anonymized, aggregated statistical data — with no link to any individual user — may be retained indefinitely for metabolic health research. This data cannot be used to re-identify any person and is not subject to the right of erasure under GDPR Recital 26.</li>
                 </ul>
 
-                <h5 class="fw-semibold mt-4">How Your Data Is Used</h5>
+                <!-- 3. Information We Collect & Store -->
+                <h5 class="fw-semibold mt-4">3. Information We Collect &amp; Store</h5>
+                <ul class="text-muted">
+                    <li><strong>Account data:</strong> Email address and securely hashed password (bcrypt).</li>
+                    <li><strong>Meal plans and recipes:</strong> Your planned meals, recipe collections, ingredient lists, nutritional calculations, and generated shopping lists.</li>
+                    <li><strong>CGM glucose data:</strong> Blood glucose readings fetched from connected continuous glucose monitoring providers. Retained for up to 365 days from the date of collection.</li>
+                    <li><strong>Activity and health data:</strong> Data fetched from connected fitness and health platforms, including activity summaries (type, start time, duration, calories burned), resting heart rate, heart rate variability (HRV), body weight, aerobic fitness metrics, and sleep duration and quality. This applies to all connected platforms uniformly, regardless of the specific device or service used.</li>
+                    <li><strong>Third-party credentials:</strong> OAuth tokens and/or provider passwords required for data synchronization. All credentials are stored encrypted at rest using Fernet symmetric encryption (AES-128-CBC with HMAC-SHA256). Plaintext credentials are never persisted.</li>
+                </ul>
+
+                <!-- 4. How Your Data Is Used -->
+                <h5 class="fw-semibold mt-4">4. How Your Data Is Used</h5>
+                <p class="text-muted mb-2">
+                    Personal data is used exclusively to provide the MenuBuilder service to the authenticated user. Specifically:
+                </p>
+                <ul class="text-muted">
+                    <li>Generating weekly meal and nutrition overviews with per-meal nutritional breakdowns.</li>
+                    <li>Displaying CGM glucose curves and correlating them with carbohydrate intake per meal.</li>
+                    <li>Visualizing activity, heart rate, HRV, sleep, and other physiological metrics from connected platforms on a shared health timeline alongside glucose and nutrition data.</li>
+                    <li>Automated background synchronization of connected data sources to keep dashboards current.</li>
+                </ul>
+                <p class="text-muted mb-2">
+                    In addition, upon account deletion or provider disconnection, personal data is fully deleted
+                    and a one-time anonymization step is performed. The resulting anonymized, aggregated statistical
+                    metrics (see Section 7) are retained for metabolic health research purposes. This anonymized
+                    dataset contains no personal identifiers and cannot be linked back to any individual.
+                </p>
                 <p class="text-muted">
-                    Data is used exclusively to provide in-app features: generating weekly meal and nutrition
-                    overviews, displaying CGM glucose curves, and visualizing Garmin activity data on the shared
-                    health timeline. No data is processed for advertising or profiling purposes.
+                    <strong>No personal data is processed for advertising, behavioral profiling, marketing, or any
+                    purpose unrelated to the direct functionality of MenuBuilder or the anonymized research
+                    described above.</strong>
                 </p>
 
-                <h5 class="fw-semibold mt-4">Data Sharing</h5>
+                <!-- 5. Data Sharing & Third Parties -->
+                <h5 class="fw-semibold mt-4">5. Data Sharing &amp; Third Parties</h5>
                 <p class="text-muted">
-                    We do not transmit, sell, or share personal information with third parties.
-                    MenuBuilder operates without third-party analytics SDKs or advertising networks.
+                    We do not sell, rent, license, or share personal data with third parties for their own purposes.
+                    MenuBuilder operates without third-party analytics SDKs, advertising networks, or tracking pixels.
+                </p>
+                <p class="text-muted mb-2">Data may be disclosed only in the following limited circumstances:</p>
+                <ul class="text-muted">
+                    <li><strong>Infrastructure providers:</strong> The application and database are hosted on a cloud infrastructure provider. The hosting provider acts as a data processor under a standard data processing agreement and does not access user-level health data.</li>
+                    <li><strong>Legal obligations:</strong> If required by law, regulation, or valid legal process (e.g. court order), we may disclose data to the extent legally necessary.</li>
+                </ul>
+
+                <!-- 6. Data Security -->
+                <h5 class="fw-semibold mt-4">6. Data Security</h5>
+                <ul class="text-muted">
+                    <li>All data in transit is protected via HTTPS/TLS encryption.</li>
+                    <li>Third-party OAuth tokens and provider credentials are encrypted at rest using Fernet AES-128 symmetric encryption.</li>
+                    <li>User passwords are hashed using bcrypt with per-user salts; plaintext passwords are never stored.</li>
+                    <li>Database access is restricted to the application layer; no direct external access is permitted.</li>
+                    <li>Each user's health data is logically isolated — data is never accessible across accounts.</li>
+                    <li>MenuBuilder does not request or store sensitive data unrelated to metabolic and physical health (e.g. GPS routes, contacts, payment information, social graph data).</li>
+                </ul>
+
+                <!-- 7. Data Retention, Deletion & Anonymization -->
+                <h5 class="fw-semibold mt-4">7. Data Retention, Deletion &amp; Anonymization</h5>
+                <ul class="text-muted">
+                    <li><strong>Account deletion:</strong> Users may delete their account at any time from profile settings. All personal data — including meal plans, health readings, credentials, and account information — is permanently and irreversibly deleted.</li>
+                    <li><strong>Automatic purging:</strong> CGM glucose readings and food logs older than 365 days are automatically purged.</li>
+                    <li><strong>Provider disconnection:</strong> Users may disconnect any connected health or fitness platform individually at any time from their profile settings. Disconnection triggers immediate and permanent deletion of all personal data and credentials associated with that provider. No personal data from that provider is retained after disconnection.</li>
+                    <li><strong>OAuth token revocation:</strong> Stored OAuth tokens for a disconnected platform are deleted immediately. Users are also encouraged to revoke access directly from the provider's own settings.</li>
+                    <li><strong>Anonymization upon deletion:</strong> Prior to personal data deletion (triggered by account deletion or provider disconnection), MenuBuilder derives a set of fully anonymized statistical aggregates from the affected data. These aggregates contain no personal identifiers, no precise timestamps, and no raw measurements — only bucketed statistical metrics (e.g. average post-meal glucose response by carbohydrate range, glycemic variability by time of day, activity impact on glucose by exercise type). This anonymized dataset is retained indefinitely for metabolic health research. Because it contains no personal data within the meaning of GDPR Recital 26, it is not subject to data subject rights including the right of erasure.</li>
+                </ul>
+
+                <!-- 8. Your Rights Under GDPR -->
+                <h5 class="fw-semibold mt-4">8. Your Rights Under GDPR</h5>
+                <p class="text-muted mb-2">As a data subject under GDPR, you have the following rights regarding your personal data:</p>
+                <ul class="text-muted">
+                    <li><strong>Right of access (Art. 15):</strong> Request a copy of the personal data we hold about you.</li>
+                    <li><strong>Right to rectification (Art. 16):</strong> Request correction of inaccurate personal data.</li>
+                    <li><strong>Right to erasure (Art. 17):</strong> Request deletion of your personal data. This is fulfilled via the account deletion and provider disconnection features in profile settings.</li>
+                    <li><strong>Right to data portability (Art. 20):</strong> Request your data in a structured, commonly used, machine-readable format.</li>
+                    <li><strong>Right to withdraw consent (Art. 7(3)):</strong> Withdraw consent for health data processing at any time by disconnecting the relevant integration or deleting your account.</li>
+                    <li><strong>Right to lodge a complaint:</strong> You may file a complaint with the Czech Office for Personal Data Protection (ÚOOÚ) or your local supervisory authority.</li>
+                </ul>
+                <p class="text-muted">
+                    Note: anonymized, aggregated statistical data derived from your data (as described in Section 7)
+                    does not constitute personal data and is therefore not subject to the above rights.
+                    To exercise any of the above rights, contact us at
+                    <a href="mailto:support@petitchat.cz" class="text-green fw-medium">support@petitchat.cz</a>.
+                    We will respond within 30 days.
                 </p>
 
-                <h5 class="fw-semibold mt-4">Data Retention &amp; Control</h5>
+                <!-- 9. International Data Transfers -->
+                <h5 class="fw-semibold mt-4">9. International Data Transfers</h5>
                 <p class="text-muted">
-                    Users may delete their account at any time, which permanently removes all associated data.
-                    Glucose readings and food logs are automatically purged after 365 days. Users may disconnect
-                    third-party services (LibreLinkUp, Garmin) individually at any time; disconnection triggers
-                    immediate deletion of the corresponding cached data.
+                    MenuBuilder's database and application servers are hosted within the European Union.
+                    When you connect a third-party health or fitness platform, data may be fetched from
+                    servers operated by the respective provider, which may be located outside the EU/EEA.
+                    Such transfers are governed by the provider's own terms and the Standard Contractual Clauses
+                    or adequacy decisions applicable to that provider.
                 </p>
 
-                <h5 class="fw-semibold mt-4">Children's Privacy</h5>
+                <!-- 10. Cookies & Tracking -->
+                <h5 class="fw-semibold mt-4">10. Cookies &amp; Tracking</h5>
+                <p class="text-muted">
+                    MenuBuilder uses only essential session cookies required for user authentication and
+                    application functionality. We do not use tracking cookies, third-party analytics services,
+                    advertising pixels, or any form of cross-site tracking.
+                </p>
+
+                <!-- 11. Children's Privacy -->
+                <h5 class="fw-semibold mt-4">11. Children's Privacy</h5>
                 <p class="text-muted">
                     MenuBuilder is intended for users 16 years of age or older and is not directed at children.
+                    We do not knowingly collect personal data from individuals under 16. If we become aware that
+                    a user is under 16, we will promptly delete their account and all associated data.
                 </p>
 
-                <h5 class="fw-semibold mt-4">Contact</h5>
+                <!-- 12. Changes to This Policy -->
+                <h5 class="fw-semibold mt-4">12. Changes to This Policy</h5>
+                <p class="text-muted">
+                    We may update this Privacy Policy from time to time to reflect changes in our practices or
+                    applicable law. Material changes will be communicated via a notice within the MenuBuilder
+                    application. The "Last updated" date at the top of this policy indicates the most recent revision.
+                    Continued use of MenuBuilder after changes are posted constitutes acceptance of the revised policy.
+                </p>
+
+                <!-- 13. Contact -->
+                <h5 class="fw-semibold mt-4">13. Contact</h5>
+                <p class="text-muted mb-1">
+                    For any questions, concerns, or requests related to this Privacy Policy or your personal data, contact:
+                </p>
                 <p class="text-muted mb-0">
-                    Questions about privacy? Contact us at
-                    <a href="mailto:support@petitchat.cz" class="text-green fw-medium">support@petitchat.cz</a>.
+                    <strong>Petit Chat s.r.o.</strong><br>
+                    Email: <a href="mailto:support@petitchat.cz" class="text-green fw-medium">support@petitchat.cz</a><br>
+                    Website: <a href="https://menubuilder.petitchat.cz" class="text-green fw-medium" target="_blank">menubuilder.petitchat.cz</a>
                 </p>
             </div>
         </div>
