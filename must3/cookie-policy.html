@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MUST3 — Cookie Policy</title>
+  <meta name="description" content="Information about cookies and browser storage in the MUST3 service.">
+  <style>
+    :root { color-scheme: light; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; line-height: 1.6; max-width: 48rem; margin: 0 auto; padding: 2rem 1.25rem 4rem; color: #1a1a1a; }
+    h1 { font-size: 1.75rem; line-height: 1.25; margin-bottom: 0.25rem; }
+    h2 { font-size: 1.15rem; margin-top: 2rem; margin-bottom: 0.5rem; }
+    p, li { font-size: 0.95rem; }
+    .meta { color: #555; font-size: 0.875rem; margin-bottom: 2rem; }
+    .lang { margin-bottom: 1.5rem; font-size: 0.875rem; }
+    .lang a { color: #1585c4; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.875rem; margin: 1rem 0; }
+    th, td { border: 1px solid #ddd; padding: 0.5rem 0.65rem; text-align: left; vertical-align: top; }
+    th { background: #f5f5f5; }
+    code { font-size: 0.85em; background: #f0f0f0; padding: 0.1em 0.35em; border-radius: 3px; }
+    a { color: #1585c4; }
+  </style>
+</head>
+<body>
+  <p class="lang"><a href="zasady-cookies.html" hreflang="cs">Česká verze</a> · <a href="privacy-policy.html">Privacy policy</a></p>
+
+  <h1>Cookie and browser storage policy</h1>
+  <p class="meta">MUST3 service · document version 2026-05-30 · effective 30 May 2026</p>
+
+  <p>This policy explains how the MUST3 web application (<a href="https://must3.com">must3.com</a>), operated by <strong>Petit chat s.r.o.</strong>, uses cookies and similar technologies (localStorage, sessionStorage).</p>
+
+  <h2>1. Consent banner</h2>
+  <p>On your first visit we show a banner with:</p>
+  <ul>
+    <li><strong>Accept all</strong> — enables essential cookies and optional functional storage (below).</li>
+    <li><strong>Essential only</strong> — enables only cookies required for sign-in; functional localStorage is not used.</li>
+  </ul>
+  <p>Your choice is stored in localStorage under <code>must3_cookie_consent</code>. Change it anytime at <a href="https://must3.com/?cookie_settings=1">https://must3.com/?cookie_settings=1</a>.</p>
+
+  <h2>2. Essential cookies</h2>
+  <p>Required for the service to work (sign-in, session security). Disabling them will log you out.</p>
+  <table>
+    <thead>
+      <tr><th>Name / type</th><th>Purpose</th><th>Duration</th><th>Provider</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Supabase Auth cookies<br><small>(typically <code>sb-</code> prefix)</small></td>
+        <td>Maintain signed-in session, CSRF protection</td>
+        <td>Session / per auth settings</td>
+        <td>Supabase (EU — Paris)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>3. Functional cookies and localStorage</h2>
+  <p>Used only after you choose <strong>Accept all</strong> in the banner:</p>
+  <table>
+    <thead>
+      <tr><th>Name</th><th>Type</th><th>Purpose</th><th>Duration</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>must3_cookie_consent</code></td>
+        <td>localStorage</td>
+        <td>Stores your banner choice</td>
+        <td>Until cleared in browser</td>
+      </tr>
+      <tr>
+        <td><code>must3_blog_anon_like_id</code></td>
+        <td>Cookie + localStorage</td>
+        <td>Anonymous blog like identifier (no IP fingerprint)</td>
+        <td>Cookie: 1 year</td>
+      </tr>
+      <tr>
+        <td><code>must3.dashboard.metrics.v2</code></td>
+        <td>localStorage</td>
+        <td>Selected dashboard chart metrics</td>
+        <td>Until cleared in browser</td>
+      </tr>
+      <tr>
+        <td><code>meal_plan_tip_dismissed</code></td>
+        <td>localStorage</td>
+        <td>Dismissed meal-plan tip</td>
+        <td>Until cleared in browser</td>
+      </tr>
+      <tr>
+        <td><code>shopping_list_tip_dismissed</code></td>
+        <td>localStorage</td>
+        <td>Dismissed shopping-list tip</td>
+        <td>Until cleared in browser</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>4. Technical sessionStorage</h2>
+  <p>After a new app deployment, sessionStorage may be used once to reload the page if a module fails to load. It contains no personal data and lasts only for the browser session.</p>
+
+  <h2>5. Analytics cookies</h2>
+  <p><strong>We do not use analytics cookies.</strong> Visit statistics are collected with <strong>Umami</strong> in <strong>cookieless</strong> mode. Umami does not store an identifier in your browser and is not tied to the cookie banner choice.</p>
+
+  <h2>6. Marketing cookies</h2>
+  <p>We do <strong>not</strong> use third-party marketing or advertising cookies.</p>
+
+  <h2>7. Account consents (not cookies)</h2>
+  <p>Consents for personal-data processing (privacy & terms, health-data use, newsletter) are stored in our secure database after sign-in — not in cookies. See the <a href="privacy-policy.html">Privacy policy</a>.</p>
+
+  <h2>8. Browser controls</h2>
+  <p>You can delete cookies and localStorage in browser settings. Deleting essential cookies signs you out. Deleting <code>must3_cookie_consent</code> shows the banner again.</p>
+
+  <h2>9. Contact</h2>
+  <p>Questions: <a href="mailto:privacy@must3.com">privacy@must3.com</a> · Controller: Petit chat s.r.o.</p>
+
+  <h2>10. Changes</h2>
+  <p>We will publish updates on this page with a new version date. Material changes may require renewed consent in the app.</p>
+
+  <p class="meta">© Petit chat s.r.o.</p>
+</body>
+</html>

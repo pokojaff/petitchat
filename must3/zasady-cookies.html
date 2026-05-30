@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MUST3 — Zásady cookies</title>
+  <meta name="description" content="Informace o cookies a ukládání v prohlížeči ve službě MUST3.">
+  <style>
+    :root { color-scheme: light; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; line-height: 1.6; max-width: 48rem; margin: 0 auto; padding: 2rem 1.25rem 4rem; color: #1a1a1a; }
+    h1 { font-size: 1.75rem; line-height: 1.25; margin-bottom: 0.25rem; }
+    h2 { font-size: 1.15rem; margin-top: 2rem; margin-bottom: 0.5rem; }
+    p, li { font-size: 0.95rem; }
+    .meta { color: #555; font-size: 0.875rem; margin-bottom: 2rem; }
+    .lang { margin-bottom: 1.5rem; font-size: 0.875rem; }
+    .lang a { color: #1585c4; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.875rem; margin: 1rem 0; }
+    th, td { border: 1px solid #ddd; padding: 0.5rem 0.65rem; text-align: left; vertical-align: top; }
+    th { background: #f5f5f5; }
+    code { font-size: 0.85em; background: #f0f0f0; padding: 0.1em 0.35em; border-radius: 3px; }
+    a { color: #1585c4; }
+  </style>
+</head>
+<body>
+  <p class="lang"><a href="cookie-policy.html" hreflang="en">English version</a> · <a href="ochrana-osobnich-udaju.html">Ochrana osobních údajů</a></p>
+
+  <h1>Zásady cookies a ukládání v prohlížeči</h1>
+  <p class="meta">Služba MUST3 · verze dokumentu 2026-05-30 · platné od 30. 5. 2026</p>
+
+  <p>Tyto zásady vysvětlují, jak webová aplikace MUST3 (<a href="https://must3.com">must3.com</a>) provozovaná společností <strong>Petit chat s.r.o.</strong> používá cookies a obdobné technologie (localStorage, sessionStorage).</p>
+
+  <h2>1. Lišta souhlasu</h2>
+  <p>Při první návštěvě zobrazíme lištu s volbami:</p>
+  <ul>
+    <li><strong>Přijmout vše</strong> — povolí nezbytné cookies a volitelné funkční ukládání (viz níže).</li>
+    <li><strong>Pouze nezbytné</strong> — povolí jen cookies nutné pro přihlášení; funkční localStorage se nepoužívá.</li>
+  </ul>
+  <p>Volbu ukládáme do localStorage pod klíčem <code>must3_cookie_consent</code>. Nastavení můžete kdykoli změnit otevřením adresy <a href="https://must3.com/?cookie_settings=1">https://must3.com/?cookie_settings=1</a>.</p>
+
+  <h2>2. Nezbytné cookies</h2>
+  <p>Tyto cookies jsou nutné pro fungování služby (přihlášení, bezpečnost relace). Nelze je vypnout bez ztráty přihlášení.</p>
+  <table>
+    <thead>
+      <tr><th>Název / typ</th><th>Účel</th><th>Doba</th><th>Poskytovatel</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Supabase Auth cookies<br><small>(typicky prefix <code>sb-</code>)</small></td>
+        <td>Udržení přihlášené relace, ochrana proti CSRF</td>
+        <td>Relace / dle nastavení auth</td>
+        <td>Supabase (EU — Paris)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>3. Funkční cookies a localStorage</h2>
+  <p>Tyto technologie používáme pouze po volbě <strong>Přijmout vše</strong> v cookie liště:</p>
+  <table>
+    <thead>
+      <tr><th>Název</th><th>Typ</th><th>Účel</th><th>Doba</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>must3_cookie_consent</code></td>
+        <td>localStorage</td>
+        <td>Evidence vaší volby v cookie liště</td>
+        <td>Do smazání v prohlížeči</td>
+      </tr>
+      <tr>
+        <td><code>must3_blog_anon_like_id</code></td>
+        <td>Cookie + localStorage</td>
+        <td>Anonymní identifikátor pro lajky blogu (bez IP otisku)</td>
+        <td>Cookie: 1 rok</td>
+      </tr>
+      <tr>
+        <td><code>must3.dashboard.metrics.v2</code></td>
+        <td>localStorage</td>
+        <td>Vaše výběr metrik na přehledovém grafu</td>
+        <td>Do smazání v prohlížeči</td>
+      </tr>
+      <tr>
+        <td><code>meal_plan_tip_dismissed</code></td>
+        <td>localStorage</td>
+        <td>Skrytí nápovědy v editoru jídelníčku</td>
+        <td>Do smazání v prohlížeči</td>
+      </tr>
+      <tr>
+        <td><code>shopping_list_tip_dismissed</code></td>
+        <td>localStorage</td>
+        <td>Skrytí nápovědy v nákupním seznamu</td>
+        <td>Do smazání v prohlížeči</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>4. Technické sessionStorage</h2>
+  <p>Po nasazení nové verze aplikace může být jednorázově použit sessionStorage pro obnovení stránky po chybě načtení modulu. Neobsahuje osobní údaje a trvá jen po dobu relace prohlížeče.</p>
+
+  <h2>5. Analytické cookies</h2>
+  <p><strong>Nepoužíváme analytické cookies.</strong> Měření návštěvnosti provádíme nástrojem <strong>Umami</strong> v režimu <strong>bez cookies</strong> (cookieless). Umami neukládá identifikátor do vašeho prohlížeče a není vázáno na volbu v cookie liště.</p>
+
+  <h2>6. Marketingové cookies</h2>
+  <p>Marketingové cookies třetích stran (reklamní sítě) <strong>nepoužíváme</strong>.</p>
+
+  <h2>7. Účetní souhlasy (mimo cookies)</h2>
+  <p>Souhlasy týkající se zpracování osobních údajů (GDPR a podmínky užití, využití zdravotních dat, newsletter) evidujeme v zabezpečené databázi po přihlášení — ne v cookies. Více v dokumentu <a href="ochrana-osobnich-udaju.html">Ochrana osobních údajů</a>.</p>
+
+  <h2>8. Správa v prohlížeči</h2>
+  <p>Cookies a localStorage můžete smazat v nastavení prohlížeče. Smazání nezbytných cookies vás odhlásí. Smazání <code>must3_cookie_consent</code> znovu zobrazí cookie lištu.</p>
+
+  <h2>9. Kontakt</h2>
+  <p>Dotazy: <a href="mailto:privacy@must3.com">privacy@must3.com</a> · Správce: Petit chat s.r.o.</p>
+
+  <h2>10. Změny</h2>
+  <p>Aktualizace těchto zásad zveřejníme na této stránce s uvedením nové verze. Podstatné změny mohou vyžadovat nový souhlas v aplikaci.</p>
+
+  <p class="meta">© Petit chat s.r.o.</p>
+</body>
+</html>
