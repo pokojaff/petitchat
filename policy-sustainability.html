@@ -20,66 +20,50 @@
     <div class="row justify-content-center">
         <div class="col-lg-10 col-xl-8">
             <h2 class="fw-bold mb-3">Sustainability & Digital Responsibility</h2>
-            <p class="text-muted">Last updated: March 2026</p>
+            <p class="text-muted">Last updated: October 2026</p>
             <p class="text-muted">
-                At <strong>Petit chat, s.r.o.</strong>, we believe that digital innovation should not come 
-                at the expense of our planet. As a remote-first software company, we are committed to 
-                minimizing our carbon footprint through efficient engineering and responsible 
-                infrastructure choices.
+                At <strong>Petit chat, s.r.o.</strong>, digital products should stay useful without
+                wasting energy, data, or hardware. This statement covers how we build and run our own
+                products. It is not a carbon-footprint certificate, and it does not replace a client's
+                own environmental policy when we deliver software for them.
             </p>
 
-            <h5 class="mt-4">1. Green Cloud Infrastructure</h5>
+            <h5 class="mt-4">1. Infrastructure</h5>
             <p class="text-muted">
-                The environmental impact of software is primarily driven by the energy consumption of data centers. 
-                We carefully select our hosting partners based on their commitment to renewable energy:
+                The energy cost of software is mostly the energy cost of the computers that run it.
+                We host production workloads in the European Union and prefer providers that publish
+                how their regions use power and how efficient their data centres are. Capacity is sized
+                to the load a product actually has, so we are not paying — or powering — idle machines
+                we do not need.
             </p>
-            <ul class="text-muted">
-                <li><strong>DigitalOcean Frankfurt:</strong> Our primary data center region is selected for its 
-                high standards of energy efficiency and the commitment of the local grid to transition towards 
-                carbon neutrality.</li>
-                <li><strong>Resource Optimization:</strong> We use "right-sizing" for our server instances, 
-                ensuring we do not waste energy on idle computing power.</li>
-            </ul>
 
-            <h5 class="mt-4">2. Sustainable Engineering (Green Code)</h5>
+            <h5 class="mt-4">2. Efficient Software</h5>
             <p class="text-muted">
-                Efficient code is sustainable code. We strive to reduce the "digital weight" of our 
-                applications to save energy on both the server-side and the user's device:
+                Smaller, simpler processing uses less electricity on the server and on the device
+                in someone's hand:
             </p>
             <ul class="text-muted">
-                <li><strong>Algorithmic Efficiency:</strong> We optimize our back-end processes to minimize 
-                CPU cycles and memory usage, directly reducing the electricity required for data processing.</li>
-                <li><strong>Data Minimization:</strong> By requesting and storing only the necessary data points 
-                from providers like Garmin, we reduce the energy cost of data transmission and storage.</li>
-                <li><strong>Battery Longevity:</strong> Our mobile integrations are designed to be "battery-aware," 
-                reducing frequent wake-ups of the user's device, which extends hardware lifespan and reduces 
-                charging frequency.</li>
+                <li><strong>Lean processing:</strong> We keep background work and queries to what the feature needs, instead of recomputing or transferring the same data over and over.</li>
+                <li><strong>Data minimisation:</strong> Products store and request only the fields they use. That includes data harvested from sensors, wearable devices, and cloud services a user chooses to connect.</li>
+                <li><strong>Device impact:</strong> Mobile apps avoid unnecessary background wake-ups, so the phone or watch is not kept busy when the user is not using the feature.</li>
             </ul>
 
-            <h5 class="mt-4">3. Remote-First & Paperless Operations</h5>
+            <h5 class="mt-4">3. How We Operate</h5>
             <p class="text-muted">
-                Our operational model is designed to be low-impact by default:
+                We are a remote-first team. Day-to-day work, contracts, and internal documentation
+                are digital, which keeps commuting and paper out of the normal run of the company.
             </p>
-            <ul class="text-muted">
-                <li><strong>Zero Commute:</strong> As a remote-first team, we eliminate daily commuting 
-                emissions, significantly reducing our corporate carbon footprint.</li>
-                <li><strong>Fully Digital Workflow:</strong> From contract signing to internal documentation, 
-                we operate 100% paperless. We prioritize digital-only tools to avoid the environmental 
-                costs of physical office supplies.</li>
-            </ul>
 
-            <h5 class="mt-4">4. Hardware Lifecycle</h5>
+            <h5 class="mt-4">4. Hardware</h5>
             <p class="text-muted">
-                We encourage a "repair and reuse" mindset within our team. We invest in high-quality 
-                hardware designed for longevity and ensure that any end-of-life equipment is 
-                disposed of through certified e-waste recycling programs.
+                We buy hardware we expect to keep in use, repair it when that is reasonable,
+                and send equipment we retire to e-waste recycling rather than discarding it as mixed waste.
             </p>
 
             <h5 class="mt-4">5. Continuous Improvement</h5>
             <p class="text-muted">
-                Sustainability is a journey. We regularly review our tech stack and operational 
-                processes to identify new ways to reduce our environmental impact as green 
-                technologies evolve.
+                We revisit hosting, data flows, and how our apps behave on devices as products change.
+                The aim is a smaller footprint for the same service, not a one-time claim.
             </p>
         </div>
     </div>

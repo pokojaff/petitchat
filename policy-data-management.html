@@ -20,70 +20,83 @@
     <div class="row justify-content-center">
         <div class="col-lg-10 col-xl-8">
             <h2 class="fw-bold mb-3">Data Management & Security Policy</h2>
-            <p class="text-muted">Last updated: March 2026</p>
+            <p class="text-muted">Last updated: October 2026</p>
             <p class="text-muted">
-                This document outlines the technical frameworks and operational procedures used by 
-                <strong>Petit chat, s.r.o.</strong> to ensure the integrity, availability, and 
-                confidentiality of user data.
+                This policy describes how <strong>Petit chat, s.r.o.</strong> protects the confidentiality,
+                integrity, and availability of personal data in the products and services we operate.
+                It applies across our products. Where a product needs a more specific rule — for example
+                how long a particular kind of record is kept — that rule is stated in the product's own notice.
+                Work we deliver for a client's own systems is governed by that client's policies.
             </p>
 
-            <h5 class="mt-4">1. Infrastructure & Data Residency</h5>
+            <h5 class="mt-4">1. Where Data Is Processed</h5>
             <p class="text-muted">
-                Our production environment is hosted on <strong>DigitalOcean</strong> infrastructure. 
-                To comply with GDPR and ensure low-latency access for European users, all health and 
-                personal data is stored within the <strong>Frankfurt (FRA1)</strong> data center region 
-                (Germany, EEA).
+                Personal data, including health, fitness, and other sensitive data where a product processes it,
+                is stored and processed on infrastructure located in the <strong>European Union / EEA</strong>.
+                Products may use different EU hosting providers. We select them for security, reliability,
+                and data-protection terms, and we keep production data inside the EU.
             </p>
+            <p class="text-muted">
+                If you connect a sensor, device, or cloud service, that provider may process data on its own
+                systems, which can be outside the EU. That transfer is covered by the provider's terms and
+                by the safeguards that apply to that provider. You can disconnect the source at any time
+                in the provider's settings or, where the product offers it, in the product itself.
+            </p>
+
+            <h5 class="mt-4">2. Security Measures</h5>
+            <p class="text-muted">We apply the same baseline to every product we operate:</p>
             <ul class="text-muted">
-                <li><strong>Server Security:</strong> We utilize firewalled droplets and VPC (Virtual Private Cloud) to isolate database traffic from the public internet.</li>
-                <li><strong>Database Management:</strong> We employ managed database clusters with automated patching and encrypted storage volumes.</li>
+                <li><strong>Encryption:</strong> Data is encrypted in transit and at rest, using current industry-standard protocols and algorithms.</li>
+                <li><strong>Least exposure:</strong> Databases and internal services are not left open to the public internet. Only the interfaces a product needs are reachable.</li>
+                <li><strong>Isolation:</strong> One user's records are not available to another user. Access between accounts requires an explicit relationship the product supports, such as a coach and an athlete.</li>
+                <li><strong>No sale of data:</strong> We do not sell, rent, or trade personal or health data with advertisers or data brokers.</li>
+                <li><strong>Minimum data:</strong> A product requests only the categories it needs to provide its features, including from connected sensors, devices, and cloud services.</li>
             </ul>
 
-            <h5 class="mt-4">2. Backup & Disaster Recovery</h5>
+            <h5 class="mt-4">3. Backups & Recovery</h5>
             <p class="text-muted">
-                We recognize the critical nature of health data. Our backup strategy is designed for 
-                resilience:
-            </p>
-            <ul class="text-muted">
-                <li><strong>Frequency:</strong> Full system snapshots and database backups are performed once every 24 hours.</li>
-                <li><strong>Redundancy:</strong> Backups are stored on separate, geographically redundant storage volumes within the DigitalOcean infrastructure.</li>
-                <li><strong>Integrity:</strong> We regularly perform recovery drills to ensure that data can be restored effectively in the event of a platform-wide or application-level failure.</li>
-            </ul>
-
-            <h5 class="mt-4">3. Data Retention & Deletion Logic</h5>
-            <p class="text-muted">
-                We give users full control over their digital footprint. Our deletion process follows a 
-                two-tier approach:
-            </p>
-            <ul class="text-muted">
-                <li><strong>Standard Deletion:</strong> Upon account closure, data is placed in a "soft-delete" state for 30 days, allowing users to recover their history if the request was accidental.</li>
-                <li><strong>Immediate Liquidation:</strong> Users may opt for "Immediate Permanent Deletion." In this case, all health and biometric records are purged from active production databases within minutes, without the possibility of recovery.</li>
-                <li><strong>Backup Purging:</strong> Data in backups is cleared naturally as part of the standard 30-day rotation cycle.</li>
-            </ul>
-
-            <h5 class="mt-4">4. Access Control & Human Factors</h5>
-            <p class="text-muted">
-                We minimize human interaction with sensitive data through strict Role-Based Access Control (RBAC):
-            </p>
-            <ul class="text-muted">
-                <li><strong>Database Administrators:</strong> Direct access to the database is restricted to authorized personnel whose employment contracts include specific non-disclosure and sensitive data handling clauses.</li>
-                <li><strong>Assisted Support Access:</strong> Support staff cannot access user accounts by default. Access is only granted through a mutual verification process requiring the user's active assistance and explicit consent for a limited time window.</li>
-                <li><strong>Authentication:</strong> Multi-factor authentication (MFA) is mandatory for all administrative interfaces.</li>
-            </ul>
-
-            <h5 class="mt-4">5. Research & Anonymization</h5>
-            <p class="text-muted">
-                To improve health outcomes and system performance, we may use data for statistical research. 
-                Any data used for these purposes is subjected to a rigorous <strong>anonymization process</strong>. 
-                All Personal Identifiable Information (PII) is stripped, ensuring that records can never 
-                be linked back to an individual user, thus maintaining 100% privacy even during large-scale 
-                trend analysis.
+                Production data is backed up regularly so a product can be restored after a failure.
+                Backups stay within the EU and are kept only for as long as they are needed for recovery.
+                We test that restoration works. A backup is a recovery copy, not a second long-term archive
+                of your account.
             </p>
 
-            <h5 class="mt-4">6. Security Audits</h5>
+            <h5 class="mt-4">4. Retention & Deletion</h5>
             <p class="text-muted">
-                We perform regular internal security reviews of our Data Management Policy to adapt to 
-                new threats and ensure that our technical debt is managed in favor of user safety.
+                We keep personal data for as long as your account is active, or for the shorter period
+                a product states for a given category. You can ask us to delete your account and the
+                personal data that belongs to it. Deletion removes data from active systems.
+                Copies that already sit in a backup disappear when that backup expires.
+            </p>
+            <p class="text-muted">
+                Some products delete a connected source immediately when you disconnect it, or purge
+                older readings on a fixed schedule. Those periods are part of the product notice,
+                not of this company-wide policy.
+            </p>
+
+            <h5 class="mt-4">5. Who Can Access Data</h5>
+            <p class="text-muted">
+                Access to production personal data is limited to people who need it to run the service,
+                and those people are bound by confidentiality. Administrative access requires strong
+                authentication. Support staff do not have standing access to browse health or other
+                sensitive records. Where a product allows assisted support, that access is limited to
+                the request you make and to the time needed to resolve it.
+            </p>
+
+            <h5 class="mt-4">6. Statistics</h5>
+            <p class="text-muted">
+                A product may use data to improve the service or to produce statistics. When it does,
+                the data used for that purpose is aggregated or anonymised so that it cannot reasonably
+                be linked back to you. The product notice says whether this happens and what is retained.
+                Anonymised statistics are not a substitute for deleting your personal data: personal data
+                is still deleted as described above.
+            </p>
+
+            <h5 class="mt-4">7. Reviews</h5>
+            <p class="text-muted">
+                We review these controls as products, providers, and threats change. Questions about
+                this policy or about your data can be sent to
+                <a href="mailto:support@petitchat.cz" class="text-accent">support@petitchat.cz</a>.
             </p>
         </div>
     </div>
